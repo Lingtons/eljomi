@@ -25,7 +25,7 @@ class CreateCustomersTable extends Migration
             $table->enum('gender', ['Female', 'Male']);
             $table->integer('type_id')->unsigned();
             $table->timestamps();            
-            $table->foreign('type_id')->references('id')->on('types');
+            $table->foreign('type_id')->references('id')->on('types')->onDelete('cascade');;
         });
     }
 

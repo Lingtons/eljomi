@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Customer;
 
 class Preference extends Model
 {
@@ -10,4 +11,11 @@ class Preference extends Model
      protected $fillable = [
         'name'
     ];
+
+    public function customers()
+  	{
+      	return $this->belongsToMany('App\Models\Customer')
+        ->withPivot('value')
+        ->withTimestamps();
+  	}
 }
