@@ -21,5 +21,12 @@ Route::get('/manage', function () {
 
 Auth::routes();
 
+Route::prefix('manage')->group(function(){
+	Route::resource('/types', 'Web\Manage\TypeController');
+	Route::resource('/preferences', 'Web\Manage\PreferenceController');
+	Route::resource('/customers', 'Web\Manage\CustomerController');
+	Route::resource('/users', 'Web\Manage\UserController');
+});
+
 Route::get('/home', 'HomeController@index')->name('home');
 
