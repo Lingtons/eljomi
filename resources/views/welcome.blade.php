@@ -5,9 +5,9 @@
     <!-- Required meta tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Lingthon Tech">
-    <meta name="author" content="Lingthon">
-    <meta name="keywords" content="Lingthon">
+    <meta name="description" content="Lingtons Tech">
+    <meta name="author" content="Lingtons">
+    <meta name="keywords" content="Lingtons">
 
     <!-- Title Page-->
     <title>Eljomi Login Page</title>
@@ -31,25 +31,38 @@
                     <div class="login-content">
                         <div class="login-logo">
                             <a href="#">
-                                <img src="images/icon/logo.png" alt="CoolAdmin">
+                                <img src="{{asset('images/icon/logo.png')}}" alt="CoolAdmin">
                             </a>
                         </div>
                         <div class="login-form">
-                            <form action="" method="post">
-                                <div class="form-group">
+                            <form action="{{ route('login') }}" method="post">
+                                {{ csrf_field() }}
+                                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                     <label>Email Address</label>
                                     <input class="au-input au-input--full" type="email" name="email" placeholder="Email">
+                                      @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
                                     <label>Password</label>
                                     <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
+
+                                     @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+
                                 </div>
                                 <div class="login-checkbox">
                                     <label>
-                                        <input type="checkbox" name="remember">Remember Me
+                                        <input type="checkbox" name="remember"  {{ old('remember') ? 'checked' : '' }}>Remember Me
                                     </label>
                                     <label>
-                                        <a href="#">Forgotten Password?</a>
+                                        <a href="{{ route('password.request') }}">Forgotten Password?</a>
                                     </label>
                                 </div>
                                 <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
