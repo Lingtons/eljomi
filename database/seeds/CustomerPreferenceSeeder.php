@@ -29,7 +29,6 @@ class CustomerPreferenceSeeder extends Seeder
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now(),
             ]);
-
         }
     }
 }

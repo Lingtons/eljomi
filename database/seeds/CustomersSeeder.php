@@ -24,13 +24,12 @@ class CustomersSeeder extends Seeder
         $type = Type::pluck('id')->all();
         
         for ($i=0; $i < 21; $i++) { 
-        	# code...
+     
         	factory(\App\Models\Customer::class)
         			->create(['type_id' => $faker->randomElement($type),
         				'created_at' => \Carbon\Carbon::now(),
                 		'updated_at' => \Carbon\Carbon::now(),
         				]);
-        }
-        
+        }        
     }
 }
