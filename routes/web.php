@@ -15,13 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/manage', function () {
-    return view('layouts.manage');
-});
-
 Auth::routes();
 
-Route::prefix('manage')->group(function(){
+Route::prefix('manage')->middleware('auth')->group(function(){
+	Route::get('/', function () {
+	    return view('layouts.manage');
+	});
 	Route::resource('/types', 'Web\Manage\TypeController');
 	Route::resource('/preferences', 'Web\Manage\PreferenceController');
 	Route::resource('/customers', 'Web\Manage\CustomerController');
