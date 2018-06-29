@@ -31,19 +31,13 @@
                             </div>
                             <div class="table-data__tool-right">
                                 <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                    <i class="zmdi zmdi-plus"></i>add item</button>
+                                    <i class="zmdi zmdi-plus"></i>Add Type</button>
                             </div>
                         </div>
                         <div class="table-responsive table-responsive-data2">
                             <table class="table table-data2">
                                 <thead>
                                     <tr>
-                                        <th>
-                                            <label class="au-checkbox">
-                                                <input type="checkbox">
-                                                <span class="au-checkmark"></span>
-                                            </label>
-                                        </th>
                                         <th>id</th>
                                         <th>name</th>
                                         <th></th>
@@ -53,12 +47,6 @@
                                 	@if (count($types))
                         			@foreach($types as $type)
 	                                    <tr class="tr-shadow">
-	                                        <td>
-	                                            <label class="au-checkbox">
-	                                                <input type="checkbox">
-	                                                <span class="au-checkmark"></span>
-	                                            </label>
-	                                        </td>
 	                                        <td>{{$type->id}}</td>
 	                                        <td>{{$type->name}}</td>
 	                                        <td>
