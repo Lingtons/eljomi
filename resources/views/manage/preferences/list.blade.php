@@ -1,5 +1,5 @@
 @extends('layouts.manage')
-@section('title', 'Types')
+@section('title', 'Preference')
 
 @section('content')
     <!-- DATA TABLE-->
@@ -7,7 +7,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h3 class="title-5 m-b-35">Service Types</h3>
+                        <h3 class="title-5 m-b-35">Client Preferences</h3>
                         <div class="table-data__tool">
                             <div class="table-data__tool-left">
                                 <div class="rs-select2--light rs-select2--md">
@@ -30,10 +30,10 @@
                                     <i class="zmdi zmdi-filter-list"></i>filters</button>
                             </div>
                             <div class="table-data__tool-right">
-                                <a  href="#" data-toggle="modal" data-target="#addTypeModal" class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                    <i class="zmdi zmdi-plus"></i>Add Type</a>
+                                <a  href="#" data-toggle="modal" data-target="#addPreferenceModal" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                    <i class="zmdi zmdi-plus"></i>Add Preference</a>
                             </div>
-                            @include('include.modals.service_types.add')
+                            @include('include.modals.client_preferences.add')
                         </div>
                         <div class="table-responsive table-responsive-data2">
                             <table class="table table-data2">
@@ -45,21 +45,21 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                	@if (count($types))
-                        			@foreach($types as $type)
+                                	@if (count($preferences))
+                        			@foreach($preferences as $preference)
 	                                    <tr class="tr-shadow">
-	                                        <td>{{$type->id}}</td>
-	                                        <td>{{$type->name}}</td>
+	                                        <td>{{$preference->id}}</td>
+	                                        <td>{{$preference->name}}</td>
 	                                        <td>
 	                                            <div class="table-data-feature">
 	                                                
-	                                                <a href="#" data-target="#editTypeModal{{ $type->id }}" data-toggle="modal" class="item"  data-placement="top" title="Edit">
+	                                                <a href="#" data-target="#editPreferenceModal{{ $preference->id }}" data-toggle="modal" class="item"  data-placement="top" title="Edit">
 	                                                    <i class="zmdi zmdi-edit"></i>
 	                                                </a>
 	                                                
 	                                            </div>
 	                                        </td>
-                                              @include('include.modals.service_types.edit')
+                                            @include('include.modals.client_preferences.edit')
 	                                    </tr>
 	                                    <tr class="spacer"></tr>
                                     @endforeach

@@ -16,6 +16,6 @@ class TypesSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         Type::truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-        factory(\App\Models\Type::class, 2)->create();
+        factory(\App\Models\Type::class, 20)->create();
     }
 }

@@ -96,13 +96,13 @@
                                 </div>
                                 <div class="account-dropdown__body">
                                     <div class="account-dropdown__item">
-                                        <a href="#">
+                                        <a href="{{route('types.index')}}">
                                             Service Type</a>
                                     </div>
                                 </div>
                                                                 <div class="account-dropdown__body">
                                     <div class="account-dropdown__item">
-                                        <a href="#">
+                                        <a href="{{route('preferences.index')}}">
                                             Client Preference</a>
                                     </div>
                                 </div>
@@ -290,7 +290,7 @@
                                 </div>
                             </div>
                             <div class="account-dropdown__body">
-                                
+
                                 <div class="account-dropdown__item">
                                     <a href="#">
                                         <i class="zmdi zmdi-account"></i>Account</a>
