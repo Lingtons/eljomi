@@ -30,9 +30,10 @@
                                     <i class="zmdi zmdi-filter-list"></i>filters</button>
                             </div>
                             <div class="table-data__tool-right">
-                                <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                    <i class="zmdi zmdi-plus"></i>Add Type</button>
+                                <a  href="#" data-toggle="modal" data-target="#addTypeModal" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                    <i class="zmdi zmdi-plus"></i>Add Type</a>
                             </div>
+                            @include('include.modals.service_types.add')
                         </div>
                         <div class="table-responsive table-responsive-data2">
                             <table class="table table-data2">
@@ -52,15 +53,13 @@
 	                                        <td>
 	                                            <div class="table-data-feature">
 	                                                
-	                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+	                                                <a href="#" data-target="#editTypeModal{{ $type->id }}" data-toggle="modal" class="item"  data-placement="top" title="Edit">
 	                                                    <i class="zmdi zmdi-edit"></i>
-	                                                </button>
-	                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-	                                                    <i class="zmdi zmdi-delete"></i>
-	                                                </button>
+	                                                </a>
 	                                                
 	                                            </div>
 	                                        </td>
+                                              @include('include.modals.service_types.edit')
 	                                    </tr>
 	                                    <tr class="spacer"></tr>
                                     @endforeach

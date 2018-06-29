@@ -39,6 +39,17 @@ class TypeController extends Controller
     public function store(Request $request)
     {
         //
+            // validate request
+                $this->validate($request, [
+                    'name' => 'required|unique:types,name',
+        
+                ]);
+                                
+                $type = Type::create([
+                    'name' => $request->input('name'),                    
+                ]);                
+                flash('New Service Type '.$type->name.' was created successfully')->important();
+                return redirect()->back();
     }
 
     /**
@@ -72,7 +83,19 @@ class TypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         //
+        $this->validate($request, [                    
+            'name' => 'required|unique:types,name,'.$id,
+        ]);
+
+        $type = Type::findOrFail($id);
+        $type->name =  $request->input('name');
+        
+        if($type->save()){
+            flash('The service type '.$type->name.' was successfully updated')->important();
+            return redirect()->back();
+        }
+    
     }
 
     /**
