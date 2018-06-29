@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web\Manage;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Type;
 
 class TypeController extends Controller
 {
@@ -15,7 +16,8 @@ class TypeController extends Controller
     public function index()
     {
         //
-        return ("wow");
+        $types = Type::orderBy('id', 'asc')->paginate(5);
+        return view('manage.types.list', ['types' => $types]);
     }
 
     /**

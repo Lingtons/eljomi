@@ -10,7 +10,7 @@
     <meta name="keywords" content="Lingthon">
 
     <!-- Title Page-->
-    <title>Admin Section</title>
+    <title>Admin Section - @yield('title')</title>
 
     <!-- Fontfaces CSS-->
     <link href="{{ asset('css/font-face.css')}}" rel="stylesheet" media="all">
@@ -62,21 +62,7 @@
             </section>
             <!-- END WELCOME-->
 
-            <!-- STATISTIC-->
-            @include('include.manage.statistic')
-            <!-- END STATISTIC-->
-
-            <!-- STATISTIC CHART-->
-            @include('include.manage.statistic_chart')
-            <!-- END STATISTIC CHART-->
-
-            <!-- DATA TABLE-->
-            @include('include.manage.data_table')
-            <!-- END DATA TABLE-->
-
-            <!-- COPYRIGHT-->
-            @include('include.manage.copyright')
-            <!-- END COPYRIGHT-->
+            @yield('content')
         </div>
 
     </div>
