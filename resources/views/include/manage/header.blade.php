@@ -10,7 +10,7 @@
             <div class="header__navbar">
                 <ul class="list-unstyled">
                     <li class="has-sub">
-                        <a href="#">
+                        <a href="{{route('dashboard')}}">
                             <i class="fas fa-tachometer-alt"></i>Dashboard
                             <span class="bot-line"></span>
                         </a>
@@ -90,7 +90,7 @@
                     <div class="setting-dropdown js-dropdown">
                         <div class="account-dropdown__body">
                             <div class="account-dropdown__item">
-                                <a href="#">
+                                <a href="{{ route('users.index')}}">
                                     Users</a>
                             </div>
                         </div>

@@ -17,7 +17,7 @@ class PreferenceController extends Controller
     public function index()
     {
         //
-        $preferences = Preference::orderBy('id', 'desc')->paginate(10);
+        $preferences = Preference::orderBy('id', 'asc')->paginate(5);
         return view('manage.preferences.list', ['preferences' => $preferences]);
     }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web\Manage;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -15,6 +16,8 @@ class UserController extends Controller
     public function index()
     {
         //
+        $users = User::orderBy('id', 'asc')->paginate(5);
+        return view('manage.users.list', ['users' => $users]);
     }
 
     /**

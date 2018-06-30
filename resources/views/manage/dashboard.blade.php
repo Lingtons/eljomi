@@ -13,9 +13,4 @@
     <!-- DATA TABLE-->
     @include('include.manage.data_table')
     <!-- END DATA TABLE-->
-
-    <!-- COPYRIGHT-->
-    @include('include.manage.copyright')
-    <!-- END COPYRIGHT-->
- 
 @stop

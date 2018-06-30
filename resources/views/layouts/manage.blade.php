@@ -61,6 +61,10 @@
              <!-- END WELCOME-->
 
             @yield('content')
+
+            <!-- COPYRIGHT-->
+            @include('include.manage.copyright')
+            <!-- END COPYRIGHT-->
         </div>
 
     </div>

@@ -1,5 +1,5 @@
 @extends('layouts.manage')
-@section('title', 'customer')
+@section('title', 'Customer')
 
 @section('content')
     <!-- DATA TABLE-->
