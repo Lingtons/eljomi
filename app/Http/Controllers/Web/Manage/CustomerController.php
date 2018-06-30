@@ -59,10 +59,6 @@ class CustomerController extends Controller
           }
           $code = $str;
 
-            $table->string('nickname')->nullable();
-            $table->string('phone')->nullable();
-            $table->string('address')->nullable();
-
           $customer = Customer::create([
              'name' => $request->input('name'),
              'email' => $request->input('email'),
@@ -72,7 +68,7 @@ class CustomerController extends Controller
              'type_id' => $request->input('type_id'),
              'address' => $request->input('address'),
              'gender' => $request->input('gender'),
-             'code'=>$transit_code,
+             'code'=>$code,
          ]);
 
          flash('New Customer '.$customer->name.' was created successfully')->important();

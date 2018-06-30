@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h3 class="title-5 m-b-35">Create Customer</h3>
-                        {!! Form::open(['route'=>'customers.create', 'class'=>'form-horizontal form-label-left']) !!}
+                        {!! Form::open(['route'=>'customers.store', 'class'=>'form-horizontal form-label-left']) !!}
 
                         	@include('manage.customers.partials.form', ['submit'=>'Create Customer'])
 
