@@ -9,8 +9,4 @@
     <!-- STATISTIC CHART-->
     @include('include.manage.statistic_chart')
     <!-- END STATISTIC CHART-->
-
-    <!-- DATA TABLE-->
-    @include('include.manage.data_table')
-    <!-- END DATA TABLE-->
 @stop
