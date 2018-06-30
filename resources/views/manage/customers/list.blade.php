@@ -1,5 +1,5 @@
 @extends('layouts.manage')
-@section('title', 'Types')
+@section('title', 'Customer')
 
 @section('content')
     <!-- DATA TABLE-->
@@ -7,7 +7,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h3 class="title-5 m-b-35">Service Types</h3>
+                        <h3 class="title-5 m-b-35">Clients </h3>
                         <div class="table-data__tool">
                             <div class="table-data__tool-left">
                                 <div class="rs-select2--light rs-select2--md">
@@ -30,40 +30,44 @@
                                     <i class="zmdi zmdi-filter-list"></i>filters</button>
                             </div>
                             <div class="table-data__tool-right">
-                                <a  href="#" data-toggle="modal" data-target="#addTypeModal" class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                    <i class="zmdi zmdi-plus"></i>Add Type</a>
+                                <a  href="{{route('customers.create')}}" data-toggle="modal" data-target="#addcustomerModal" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                    <i class="zmdi zmdi-plus"></i>Add Client</a>
                             </div>
-                            @include('include.modals.service_types.add')
                         </div>
-                        <div class="table-responsive table-responsive-data2">
-                            <table class="table table-data2">
+                        <div class="table-responsive table--no-card m-b-30 ">
+                            <table class="table table-bordered table-striped table-earning">
                                 <thead>
                                     <tr>
                                         <th>id</th>
                                         <th>name</th>
+                                        <th class="sr-only">nickname</th>
+                                        <th>phone</th>
+                                        <th>gender</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                	@if (count($types))
-                        			@foreach($types as $type)
-	                                    <tr class="tr-shadow">
-	                                        <td>{{$type->id}}</td>
-	                                        <td>{{$type->name}}</td>
-	                                        <td>
-	                                            <div class="table-data-feature">
-	                                                
-	                                                <a href="#" data-target="#editTypeModal{{ $type->id }}" data-toggle="modal" class="item"  data-placement="top" title="Edit">
-	                                                    <i class="zmdi zmdi-edit"></i>
-	                                                </a>
-	                                                
-	                                            </div>
-	                                        </td>
-                                              @include('include.modals.service_types.edit')
-	                                    </tr>
-	                                    <tr class="spacer"></tr>
+                                    @if (count($customers))
+                                    @foreach($customers as $customer)
+                                        <tr class="tr-shadow">
+                                            <td>{{$customer->id}}</td>
+                                            <td>{{$customer->name}}</td>
+                                            <td  class="sr-only">{{$customer->nickname}}</td>
+                                            <td>{{$customer->phone}}</td>
+                                            <td>{{$customer->gender}}</td>
+                                            <td>
+                                                <div class="table-data-feature">
+                                                    
+                                                    <a href="{{ route('customers.edit', ['id' => $customer->id])}}" class="item"  data-placement="top" title="Edit">
+                                                        <i class="zmdi zmdi-edit"></i>
+                                                    </a>
+                                                    
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="spacer"></tr>
                                     @endforeach
-                          			@endif
+                                    @endif
                                 </tbody>
                             </table>
                         </div>

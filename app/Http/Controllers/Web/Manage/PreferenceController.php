@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Web\Manage;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Preference;
+
 
 class PreferenceController extends Controller
 {
@@ -15,6 +17,8 @@ class PreferenceController extends Controller
     public function index()
     {
         //
+        $preferences = Preference::orderBy('id', 'asc')->paginate(5);
+        return view('manage.preferences.list', ['preferences' => $preferences]);
     }
 
     /**
@@ -36,6 +40,16 @@ class PreferenceController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+                    'name' => 'required|unique:preferences,name',
+                ]);
+                                
+                $preference = Preference::create([
+                    'name' => $request->input('name'),                    
+                ]);            
+                    
+                flash('New Client Preference '.$preference->name.' was created successfully')->important();
+                return redirect()->back();
     }
 
     /**
@@ -70,6 +84,17 @@ class PreferenceController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request, [                    
+            'name' => 'required|unique:types,name,'.$id,
+        ]);
+
+        $preference = Preference::findOrFail($id);
+        $preference->name =  $request->input('name');
+        
+        if($preference->save()){
+            flash('The client preference '.$preference->name.' was successfully updated')->important();
+            return redirect()->back();
+        }
     }
 
     /**

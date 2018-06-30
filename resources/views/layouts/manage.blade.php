@@ -35,7 +35,7 @@
 
 </head>
 
-<body class="animsition">
+<body class="animsition" cla>
     <div class="page-wrapper">
         <!-- header -->
         @include('include.manage.header')
@@ -46,7 +46,7 @@
             <!-- BREADCRUMB-->
             @include('include.manage.breadcrumb')
             <!-- END BREADCRUMB-->
-
+            
             <!-- WELCOME-->
             <section class="welcome p-t-10">
                 <div class="container">
@@ -61,6 +61,10 @@
              <!-- END WELCOME-->
 
             @yield('content')
+
+            <!-- COPYRIGHT-->
+            @include('include.manage.copyright')
+            <!-- END COPYRIGHT-->
         </div>
 
     </div>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Web\Manage;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
+use App\Models\Type;
 
 class CustomerController extends Controller
 {
@@ -15,6 +17,8 @@ class CustomerController extends Controller
     public function index()
     {
         //
+        $customers = Customer::orderBy('id', 'asc')->paginate(5);
+        return view('manage.customers.list', ['customers' => $customers]);
     }
 
     /**
@@ -25,6 +29,8 @@ class CustomerController extends Controller
     public function create()
     {
         //
+        $types  = Type::pluck('name', 'id');
+        return view('manage.customers.create', compact('types'));
     }
 
     /**
@@ -36,6 +42,37 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+
+             'name' => 'required',
+             'email' => 'required|unique:customers,email',
+             'type_id' => 'required|numeric',
+             'gender' => 'required',
+         ]);
+
+          $length = 10;
+          $keyspace = '123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ';
+          $str = '';
+          $max = mb_strlen($keyspace, '8bit') - 1;
+          for ($i = 0; $i < $length; ++$i) {
+              $str .= $keyspace[random_int(0, $max)];
+          }
+          $code = $str;
+
+          $customer = Customer::create([
+             'name' => $request->input('name'),
+             'email' => $request->input('email'),
+             'phone' => $request->input('phone'),
+             'dob' => $request->input('dob'),
+             'nickname' => $request->input('nickname'),
+             'type_id' => $request->input('type_id'),
+             'address' => $request->input('address'),
+             'gender' => $request->input('gender'),
+             'code'=>$code,
+         ]);
+
+         flash('New Customer '.$customer->name.' was created successfully')->important();
+                return redirect()->back();
     }
 
     /**
@@ -58,6 +95,9 @@ class CustomerController extends Controller
     public function edit($id)
     {
         //
+        $customer = Customer::findOrFail($id);
+        $types  = Type::pluck('name', 'id');
+        return view('manage.customers.edit', compact('customer', 'types'));
     }
 
     /**
@@ -70,6 +110,21 @@ class CustomerController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request, [
+
+             'name' => 'required',
+             'email' => 'required|unique:customers,email,'.$id,
+             'type_id' => 'required|numeric',
+             'gender' => 'required',
+         ]);
+
+        $customer = Customer::findOrFail($id);
+        $customer->update($request->all());
+
+        if($customer->save()){
+            flash('The Customer '.$customer->name.' was successfully updated')->important();
+            return redirect()->route('customers.index');
+        }
     }
 
     /**

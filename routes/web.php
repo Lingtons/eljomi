@@ -19,8 +19,8 @@ Auth::routes();
 
 Route::prefix('manage')->middleware('auth')->group(function(){
 	Route::get('/', function () {
-	    return view('layouts.manage');
-	});
+	    return view('manage.dashboard');
+	})->name('dashboard');
 	Route::resource('/types', 'Web\Manage\TypeController');
 	Route::resource('/preferences', 'Web\Manage\PreferenceController');
 	Route::resource('/customers', 'Web\Manage\CustomerController');

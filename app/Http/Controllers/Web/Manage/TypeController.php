@@ -42,12 +42,12 @@ class TypeController extends Controller
             // validate request
                 $this->validate($request, [
                     'name' => 'required|unique:types,name',
-        
                 ]);
                                 
                 $type = Type::create([
                     'name' => $request->input('name'),                    
-                ]);                
+                ]);            
+                    
                 flash('New Service Type '.$type->name.' was created successfully')->important();
                 return redirect()->back();
     }
