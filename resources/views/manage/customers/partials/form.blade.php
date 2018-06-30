@@ -95,11 +95,15 @@
 
 <div class="form-group{{ $errors->has('dob') ? ' has-error' : '' }}">
 
+	{!! Form::label('dob', 'Date of Birth: ', ['class'=>'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+
 	@if ($errors->has('dob'))
     	<span class="help-block">{{ $errors->first('dob') }}</span>
     @endif
     
-	{!! Form::date('dob', old('dob'), ['class'=>'form-control m-r-5', 'placeholder'=>'Date of birth', 'required']) !!}
+    <div class="col-md-6 col-sm-6 col-xs-12">
+		{!! Form::date('dob', old('dob'), ['class'=>'form-control col-md-4 col-xs-12', 'placeholder'=>'Date of birth', 'required']) !!}
+	</div>
 
 </div>
 
@@ -110,7 +114,7 @@
 
 	<div class="col-md-6 col-sm-6 col-xs-12">
 
-		{!! Form::select('type_id', $types, old('type_id'), ['class'=>'form-control']) !!}
+		{!! Form::select('type_id', $types, old('type_id'), ['class'=>'form-control col-md-7 col-xs-12']) !!}
 
 		@if ($errors->has('type_id'))
 	    	<span class="help-block">{{ $errors->first('type_id') }}</span>
