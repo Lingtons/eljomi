@@ -62,22 +62,6 @@
 
 </div>
 
-<div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
-
-	{!! Form::label('phone', 'phone: ', ['class'=>'control-label col-md-3 col-sm-3 col-xs-12']) !!}
-
-	<div class="col-md-6 col-sm-6 col-xs-12">
-
-		{!! Form::number('phone', old('phone'), ['class'=>'form-control col-md-7 col-xs-12"']) !!}
-
-		@if ($errors->has('phone'))
-	   		<span class="help-block"> {{ $errors->first('phone') }}</span>
-	    @endif
-
-	</div>
-
-</div>
-
 <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}" >
 
 	{!! Form::label('address', 'Address: ', ['class'=>'control-label col-md-3 col-sm-3 col-xs-12']) !!}
@@ -97,13 +81,13 @@
     <legend class="col-md-2 col-md-offset-1">Gender</legend>
     <div class="form-check">
       <label class="form-check-label col-md-3 col-sm-3 col-xs-12">
-        <input type="radio" class="form-check-input" name="gender" id="optionsRadios1" value="Female" checked>
+        <input type="radio" class="form-check-input" name="gender" id="optionsRadios1" value="Female" @if(isset($customer)){{ $customer->gender == 'Female' ? 'checked' : '' }} @endif>
         Female
       </label>
     </div>
     <div class="form-check">
     <label class="form-check-label col-md-3 col-sm-3 col-xs-12">
-        <input type="radio" class="form-check-input" name="gender" id="optionsRadios2" value="Male">
+        <input type="radio" class="form-check-input" name="gender" id="optionsRadios2" value="Male" @if(isset($customer)){{ $customer->gender == 'Male' ? 'checked' : '' }} @endif>
         Male
       </label>
     </div>

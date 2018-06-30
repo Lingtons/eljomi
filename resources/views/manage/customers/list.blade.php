@@ -68,7 +68,7 @@
                                             <td>
                                                 <div class="table-data-feature">
                                                     
-                                                    <a href="{{ route('customers.update', ['id' => $customer->id])}}" class="item"  data-placement="top" title="Edit">
+                                                    <a href="{{ route('customers.edit', ['id' => $customer->id])}}" class="item"  data-placement="top" title="Edit">
                                                         <i class="zmdi zmdi-edit"></i>
                                                     </a>
                                                     

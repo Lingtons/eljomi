@@ -113,7 +113,7 @@ class CustomerController extends Controller
         $this->validate($request, [
 
              'name' => 'required',
-             'email' => 'required|unique:customers,email',
+             'email' => 'required|unique:customers,email,'.$id,
              'type_id' => 'required|numeric',
              'gender' => 'required',
          ]);
@@ -123,7 +123,7 @@ class CustomerController extends Controller
 
         if($customer->save()){
             flash('The Customer '.$customer->name.' was successfully updated')->important();
-            return redirect()->back();
+            return redirect()->route('customers.index');
         }
     }
 
