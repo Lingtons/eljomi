@@ -26,8 +26,7 @@ class CustomerPreferenceSeeder extends Seeder
                 'customer_id' => $faker->randomElement($customers),
                 'preference_id' => $faker->randomElement($preferences),
                 'value' => $faker->word,
-                'created_at' => \Carbon\Carbon::now(),
-                'updated_at' => \Carbon\Carbon::now(),
+               
             ]);
         }
     }

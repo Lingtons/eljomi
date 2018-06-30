@@ -19,13 +19,12 @@ class CreateCustomersTable extends Migration
             $table->string('code')->unique();
             $table->string('email')->unique()->nullable();
             $table->string('nickname')->nullable();
-            $table->string('phone')->nullable();
+            $table->string('phone');
             $table->string('address')->nullable();
             $table->date('dob')->nullable();
             $table->enum('gender', ['Female', 'Male']);
-            $table->integer('type_id')->unsigned();
+            $table->string('type');
             $table->timestamps();            
-            $table->foreign('type_id')->references('id')->on('types')->onDelete('cascade');
         });
     }
 

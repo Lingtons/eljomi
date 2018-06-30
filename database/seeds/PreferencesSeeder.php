@@ -16,9 +16,6 @@ class PreferencesSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         Preference::truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-        factory(\App\Models\Preference::class, 20)->create([
-        				'created_at' => \Carbon\Carbon::now(),
-                		'updated_at' => \Carbon\Carbon::now(),
-        				]);
+        factory(\App\Models\Preference::class, 20)->create();
     }
 }

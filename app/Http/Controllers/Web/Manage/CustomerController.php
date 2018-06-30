@@ -29,8 +29,7 @@ class CustomerController extends Controller
     public function create()
     {
         //
-        $types  = Type::pluck('name', 'id');
-        return view('manage.customers.create', compact('types'));
+        return view('manage.customers.create');
     }
 
     /**
@@ -45,8 +44,8 @@ class CustomerController extends Controller
         $this->validate($request, [
 
              'name' => 'required',
-             'email' => 'required|unique:customers,email',
-             'type_id' => 'required|numeric',
+             'phone' => 'required',
+             'type' => 'required',
              'gender' => 'required',
          ]);
 
@@ -65,7 +64,7 @@ class CustomerController extends Controller
              'phone' => $request->input('phone'),
              'dob' => $request->input('dob'),
              'nickname' => $request->input('nickname'),
-             'type_id' => $request->input('type_id'),
+             'type' => $request->input('type'),
              'address' => $request->input('address'),
              'gender' => $request->input('gender'),
              'code'=>$code,
@@ -96,8 +95,8 @@ class CustomerController extends Controller
     {
         //
         $customer = Customer::findOrFail($id);
-        $types  = Type::pluck('name', 'id');
-        return view('manage.customers.edit', compact('customer', 'types'));
+    
+        return view('manage.customers.edit', compact('customer'));
     }
 
     /**
@@ -113,8 +112,8 @@ class CustomerController extends Controller
         $this->validate($request, [
 
              'name' => 'required',
-             'email' => 'required|unique:customers,email,'.$id,
-             'type_id' => 'required|numeric',
+             'phone' => 'required',
+             'type' => 'required',
              'gender' => 'required',
          ]);
 

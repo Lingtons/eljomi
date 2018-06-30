@@ -10,14 +10,10 @@ class Customer extends Model
 {
     //
      protected $fillable = [
-        'name', 'code', 'email', 'nickname', 'phone', 'address', 'dob', 'gender','type_id'
+        'name', 'code', 'email', 'nickname', 'phone', 'address', 'dob', 'gender','type'
     ];
 
-    public function type(){
-
-    	return $this->belongsTo('App\Models\Type', 'type_id');
-    }
-
+    
     public function preferences()
   	{
       	return $this->belongsToMany('App\Models\Preference')

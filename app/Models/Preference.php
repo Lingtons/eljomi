@@ -8,6 +8,8 @@ use App\Models\Customer;
 class Preference extends Model
 {
     //
+    public $timestamps = false;
+
      protected $fillable = [
         'name'
     ];
@@ -15,7 +17,6 @@ class Preference extends Model
     public function customers()
   	{
       	return $this->belongsToMany('App\Models\Customer')
-        ->withPivot('value')
-        ->withTimestamps();
+        ->withPivot('value');
   	}
 }

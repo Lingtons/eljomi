@@ -108,16 +108,19 @@
 </div>
 
 
-<div class="form-group{{ $errors->has('type_id') ? ' has-error' : '' }}">
+<div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
 
-	{!! Form::label('type_id', 'Service Type: ', ['class'=>'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+	{!! Form::label('type', 'Client Type: ', ['class'=>'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
 	<div class="col-md-6 col-sm-6 col-xs-12">
 
-		{!! Form::select('type_id', $types, old('type_id'), ['class'=>'form-control col-md-7 col-xs-12']) !!}
-
-		@if ($errors->has('type_id'))
-	    	<span class="help-block">{{ $errors->first('type_id') }}</span>
+<select name="type" class="form-control col-md-7 col-xs-12" required>
+<option value="">Select Client Type</option>
+<option value="Individual">Individual</option>
+<option value="Corporate">Corporate</option>
+</select>
+		@if ($errors->has('type'))
+	    	<span class="help-block">{{ $errors->first('type') }}</span>
 	    @endif
 
 	</div>

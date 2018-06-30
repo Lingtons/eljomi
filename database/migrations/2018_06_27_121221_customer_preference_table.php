@@ -14,17 +14,14 @@ class CustomerPreferenceTable extends Migration
     public function up()
     {
         Schema::create('customer_preference', function (Blueprint $table) {
-            $table->integer('customer_id')->unsigned()->nullable();
-            $table->foreign('customer_id')->references('id')
-                  ->on('customers')->onDelete('cascade');
-
+            $table->integer('customer_id')->unsigned()->nullable();           
             $table->integer('preference_id')->unsigned()->nullable();
+            $table->string('value');
+            
             $table->foreign('preference_id')->references('id')
                   ->on('preferences')->onDelete('cascade');
-
-            $table->string('value');
-
-            $table->timestamps();
+            $table->foreign('customer_id')->references('id')
+                  ->on('customers')->onDelete('cascade');
         });
     }
 
