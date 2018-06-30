@@ -96,7 +96,7 @@
                                 </div>
                                 <div class="account-dropdown__body">
                                     <div class="account-dropdown__item">
-                                        <a href="#">
+                                        <a href="{{route('types.index')}}">
                                             Service Type</a>
                                     </div>
                                 </div>
@@ -183,15 +183,7 @@
                                 <li>
                                     <a href="index.html">Dashboard 1</a>
                                 </li>
-                                <li>
-                                    <a href="index2.html">Dashboard 2</a>
-                                </li>
-                                <li>
-                                    <a href="index3.html">Dashboard 3</a>
-                                </li>
-                                <li>
-                                    <a href="index4.html">Dashboard 4</a>
-                                </li>
+                            
                             </ul>
                         </li>
                         <li class="has-sub">
@@ -253,7 +245,7 @@
                                             Users</a>
                             </div>
                             <div class="account-dropdown__item">
-                                  <a href="#">
+                                  <a href="{{route('types.index')}}">
                                             Service Type</a>
                             </div>
                             <div class="account-dropdown__item">
