@@ -71,7 +71,7 @@ class CustomerController extends Controller
          ]);
 
          flash('New Customer '.$customer->name.' was created successfully')->important();
-                return redirect()->back();
+                return redirect()->route('customers.index');
     }
 
     /**

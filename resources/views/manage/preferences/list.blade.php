@@ -35,8 +35,8 @@
                             </div>
                             @include('include.modals.client_preferences.add')
                         </div>
-                        <div class="table-responsive table-responsive-data2">
-                            <table class="table table-data2">
+                        <div class="table-responsive table--no-card m-b-30 ">
+                            <table class="table table-bordered table-striped table-earning">
                                 <thead>
                                     <tr>
                                         <th>id</th>

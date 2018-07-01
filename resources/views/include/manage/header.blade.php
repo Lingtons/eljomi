@@ -90,25 +90,19 @@
                             <div class="setting-dropdown js-dropdown">
                                 <div class="account-dropdown__body">
                                     <div class="account-dropdown__item">
-                                        <a href="#">
+                                        <a href="{{route('users.index')}}">
                                             Users</a>
                                     </div>
                                 </div>
                                 <div class="account-dropdown__body">
                                     <div class="account-dropdown__item">
-                                        <a href="{{route('types.index')}}">
-                                            Service Type</a>
-                                    </div>
-                                </div>
-                                                                <div class="account-dropdown__body">
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
+                                        <a href="{{route('preferences.index')}}">
                                             Client Preference</a>
                                     </div>
                                 </div>
-                          <div class="account-dropdown__body">
+                            <div class="account-dropdown__body">
                                     <div class="account-dropdown__item">
-                                        <a href="#">
+                                        <a href="{{route('items.index')}}">
                                             Items</a>
                                     </div>
                                 </div>                                

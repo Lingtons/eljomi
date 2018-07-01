@@ -25,6 +25,7 @@ Route::prefix('manage')->middleware('auth')->group(function(){
 	Route::resource('/preferences', 'Web\Manage\PreferenceController');
 	Route::resource('/customers', 'Web\Manage\CustomerController');
 	Route::resource('/users', 'Web\Manage\UserController');
+	Route::resource('/items', 'Web\Manage\ItemController');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
