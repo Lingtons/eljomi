@@ -22,9 +22,7 @@ class CustomersSeeder extends Seeder
         
         for ($i=0; $i < 21; $i++) { 
      
-        	factory(\App\Models\Customer::class)
-        			->create(['type' => $faker->word,        			
-        				]);
+        	factory(\App\Models\Customer::class)->create();
         }        
     }
 }

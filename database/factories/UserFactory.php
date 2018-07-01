@@ -39,11 +39,31 @@ $factory->define(App\Models\Customer::class, function (Faker $faker) {
         'address' => $faker->word,
         'dob' => $faker->date($format = 'Y-m-d', $max = 'now'),
         'gender' => $faker->randomElement(['Female','Male']),
+        'type' => $faker->randomElement(['Individual' , 'Corperate']),
     ];
 });
 
 $factory->define(App\Models\Preference::class, function (Faker $faker) {
     return [
         'name' => $faker->word,
+    ];
+});
+
+$factory->define(App\Models\ItemCategory::class, function (Faker $faker) {
+    return [
+        'name' => $faker->word,
+    ];
+});
+
+$factory->define(App\Models\ServiceCategory::class, function (Faker $faker) {
+    return [
+        'name' => $faker->word,
+    ];
+});
+
+$factory->define(App\Models\Item::class, function (Faker $faker) {
+    return [
+        'name' => $faker->word,
+        'price' => $faker->randomFloat(2, 1, 2),
     ];
 });

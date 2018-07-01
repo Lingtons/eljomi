@@ -10,7 +10,7 @@ class Preference extends Model
     //
     public $timestamps = false;
 
-     protected $fillable = [
+    protected $fillable = [
         'name'
     ];
 

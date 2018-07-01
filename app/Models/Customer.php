@@ -9,7 +9,7 @@ use App\Models\Preference;
 class Customer extends Model
 {
     //
-     protected $fillable = [
+    protected $fillable = [
         'name', 'code', 'email', 'nickname', 'phone', 'address', 'dob', 'gender','type'
     ];
 
