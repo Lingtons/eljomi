@@ -1,4 +1,4 @@
-<?php
+   <?php
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -19,8 +19,6 @@ class CreateItemsTable extends Migration
             $table->integer('item_category_id')->unsigned();
             $table->string('name');
             $table->decimal('price')->unsigned();
-            
-
 
             $table->foreign('service_category_id')->references('id')
             ->on('service_categories')->onDelete('cascade');

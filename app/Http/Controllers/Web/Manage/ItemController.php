@@ -44,6 +44,24 @@ class ItemController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+
+             'name' => 'required',
+             'price' => 'required',
+             'item_category_id' => 'required',
+             'service_category_id' => 'required',
+         ]);
+
+        $item = Item::create([
+             'name' => $request->input('name'),
+             'price' => $request->input('price'),
+             'service_category_id' => $request->input('service_category_id'),
+             'item_category_id' => $request->input('item_category_id'),
+         ]);
+
+         flash('New Item '.$item->name.' was created successfully')->important();
+                return redirect()->route('items.index');
+
     }
 
     /**
@@ -83,6 +101,21 @@ class ItemController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request, [
+
+             'name' => 'required',
+             'price' => 'required',
+             'item_category_id' => 'required',
+             'service_category_id' => 'required',
+         ]);
+
+        $item = Item::findOrFail($id);
+        $item->update($request->all());
+
+        if($item->save()){
+            flash('The Customer '.$item->name.' was successfully updated')->important();
+            return redirect()->route('items.index');
+        }
     }
 
     /**

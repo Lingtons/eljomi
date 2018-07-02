@@ -14,7 +14,7 @@
                                     <h3 class="text-center title-2">Edit Item</h3>
                                 </div>
                                 <hr>
-                                {!! Form::model($item, ['method'=> 'PATCH', 'class'=>'form-horizontal form-label-left','route' => ['item.update', $item->id]]) !!}
+                                {!! Form::model($item, ['method'=> 'PATCH', 'class'=>'form-horizontal form-label-left','route' => ['items.update', $item->id]]) !!}
 
                                     @include('manage.items.partials.form', ['submit'=>'Update'])
 
