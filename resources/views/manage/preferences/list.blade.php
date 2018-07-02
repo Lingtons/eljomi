@@ -56,10 +56,13 @@
 	                                                <a href="#" data-target="#editPreferenceModal{{ $preference->id }}" data-toggle="modal" class="item"  data-placement="top" title="Edit">
 	                                                    <i class="zmdi zmdi-edit"></i>
 	                                                </a>
-	                                                
+                                                    <a href="#" data-target="#addValueModal{{ $preference->id }}" data-toggle="modal" class="item"  data-placement="top" title="More">
+                                                        <i class="zmdi zmdi-more"></i>
+                                                    </a>
 	                                            </div>
 	                                        </td>
                                             @include('include.modals.client_preferences.edit')
+                                            @include('include.modals.client_preferences.add_value')
 	                                    </tr>
 	                                    <tr class="spacer"></tr>
                                     @endforeach

@@ -27,6 +27,8 @@ Route::prefix('manage')->middleware('auth')->group(function(){
 	Route::resource('/users', 'Web\Manage\UserController');
 	Route::resource('/items', 'Web\Manage\ItemController');
 	Route::resource('/expenses', 'Web\Manage\ExpenseController');
+	Route::post('/preferences_value', 'Web\Manage\PreferenceController@preferences_value')->name('preferences_value');
+
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

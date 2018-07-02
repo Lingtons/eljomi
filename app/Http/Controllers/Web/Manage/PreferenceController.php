@@ -5,10 +5,30 @@ namespace App\Http\Controllers\Web\Manage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Preference;
-
+use App\Models\PreferenceValue;
 
 class PreferenceController extends Controller
 {
+    /**
+     * Add a value to the preference.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+
+    public function preferences_value(Request $request){
+        $this->validate($request, [
+            'name' => 'required|unique:preference_values,name',
+        ]);
+                        
+        $preferenceValue = PreferenceValue::create([
+            'name' => $request->input('name'),
+            'preference_id' => $request->input('id'),                    
+        ]);            
+            
+        flash('The Value for  has been added.')->important();
+        return redirect()->back();
+    }
     /**
      * Display a listing of the resource.
      *
