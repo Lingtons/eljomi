@@ -67,3 +67,25 @@ $factory->define(App\Models\Item::class, function (Faker $faker) {
         'price' => $faker->randomFloat(2, 1, 2),
     ];
 });
+
+$factory->define(App\Models\ExpenseCategory::class, function (Faker $faker) {
+    return [
+        'name' => $faker->word,
+    ];
+});
+        
+$factory->define(App\Models\Expense::class, function (Faker $faker) {
+
+    return [
+        'reason' => $faker->word,
+        'description' => $faker->text,
+        'amount' => $faker->randomFloat(2, 1, 2),
+        'date_occurred' => $faker->date($format = 'Y-m-d', $max = 'now'),
+    ];
+});
+
+$factory->define(App\Models\PreferenceValue::class, function (Faker $faker) {
+    return [
+        'name' => $faker->word,
+    ];
+});
