@@ -31,7 +31,7 @@
                         </ul>
                     </li>
                     <li class="has-sub">
-                        <a href="#">
+                        <a href="{{route('expenses.index')}}">
                             <i class="fas fa-credit-card"></i>
                             <span class="bot-line"></span>Expenditure</a>
                         <ul class="header3-sub-list list-unstyled">
