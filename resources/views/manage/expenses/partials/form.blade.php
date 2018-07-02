@@ -9,19 +9,6 @@
 		    @endif
 		</div>
 	</div>
-</div>
-
-<div class="row">
-	<div class="col-md-6">
-        <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}" >
-            {!! Form::label('description', 'Description: ', ['class'=>'control-label']) !!}
-            {!! Form::textArea('description', old('description'), ['class'=>'form-control mb-1"']) !!}
-
-            @if ($errors->has('description'))
-                <span class="help-block"> {{ $errors->first('description') }}</span>
-            @endif
-        </div>
-    </div>
 	<div class="col-md-6">
 		<div class="form-group{{ $errors->has('amount') ? ' has-error' : '' }}">
 			{!! Form::label('amount', 'Amount: ', ['class'=>'control-label']) !!}
@@ -54,6 +41,19 @@
             @if ($errors->has('expense_category_id'))
                 <span class="help-block">{{ $errors->first('expense_category_id') }}</span>
             @endif
+    </div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+        <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}" >
+            {!! Form::label('description', 'Description: ', ['class'=>'control-label']) !!}
+            {!! Form::textArea('description', old('description'), ['class'=>'form-control mb-1"']) !!}
+
+            @if ($errors->has('description'))
+                <span class="help-block"> {{ $errors->first('description') }}</span>
+            @endif
+        </div>
     </div>
 </div>
 

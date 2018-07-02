@@ -36,7 +36,7 @@
                             <span class="bot-line"></span>Expenditure</a>
                         <ul class="header3-sub-list list-unstyled">
                             <li>
-                                <a href="button.html" class="text-danger">New*</a>
+                                <a href="{{route('expenses.create')}}" class="text-danger">New*</a>
                             </li>   
                             <li>
                                 <a href="#">Expenditures</a>
