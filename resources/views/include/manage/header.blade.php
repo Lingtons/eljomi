@@ -39,7 +39,7 @@
                                 <a href="{{route('expenses.create')}}" class="text-danger">New*</a>
                             </li>   
                             <li>
-                                <a href="#">Expenditures</a>
+                                <a href="{{route('expenses.index')}}">Expenditures</a>
                             </li>                                
                         </ul>
                     </li>
