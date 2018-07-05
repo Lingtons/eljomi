@@ -80,8 +80,8 @@
         	{!! Form::label('type', 'Client Type: ', ['class'=>'control-label']) !!}
         	<select name="type" class="form-control mb-1" required>
         	<option value="">Select Client Type</option>
-        	<option value="Individual">Individual</option>
-        	<option value="Corporate">Corporate</option>
+        	<option value="Individual"@if(isset($customer)) selected= "{{ $customer->type == 'Individual' ? 'selected' : '' }}" @endif>Individual</option>
+        	<option value="Corporate" @if(isset($customer)) selected= "{{ $customer->type == 'Corporate' ? 'selected' : '' }}" @endif>Corporate</option>
         	</select>
         	@if ($errors->has('type'))
             	<span class="help-block">{{ $errors->first('type') }}</span>

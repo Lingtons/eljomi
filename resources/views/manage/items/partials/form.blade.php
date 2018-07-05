@@ -21,11 +21,12 @@
 </div>
 
 <div class="row">
+
 	<div class="col-md-6">
         
         {!! Form::label('item_category_id', 'item_category: ', ['class'=>'control-label']) !!}
 
-            {!! Form::select('item_category_id', $item_categories, null, ['class'=>'form-control  mb-1']) !!}
+            {!! Form::select('item_category_id', $item_categories, old('item_category_id'), ['class'=>'form-control  mb-1']) !!}
 
             @if ($errors->has('item_category'))
                 <span class="help-block">{{ $errors->first('item_category') }}</span>
@@ -35,7 +36,7 @@
         
         {!! Form::label('service_category_id', 'service_category: ', ['class'=>'control-label']) !!}
 
-            {!! Form::select('service_category_id', $service_categories, null, ['class'=>'form-control  mb-1']) !!}
+            {!! Form::select('service_category_id', $service_categories, old('service_category_id'), ['class'=>'form-control  mb-1']) !!}
 
             @if ($errors->has('service_category'))
                 <span class="help-block">{{ $errors->first('service_category') }}</span>

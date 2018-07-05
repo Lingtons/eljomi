@@ -36,7 +36,7 @@
         
         {!! Form::label('expense_category_id', 'expense_category_id: ', ['class'=>'control-label']) !!}
 
-            {!! Form::select('expense_category_id', $expense_categories, null, ['class'=>'form-control  mb-1']) !!}
+            {!! Form::select('expense_category_id', $expense_categories, old('expense_category_id'), ['class'=>'form-control  mb-1']) !!}
 
             @if ($errors->has('expense_category_id'))
                 <span class="help-block">{{ $errors->first('expense_category_id') }}</span>
