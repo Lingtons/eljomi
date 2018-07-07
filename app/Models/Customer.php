@@ -17,7 +17,6 @@ class Customer extends Model
     public function preferences()
   	{
       	return $this->belongsToMany('App\Models\Preference')
-        ->withPivot('value')
-        ->withTimestamps();
+        ->withPivot('value');
   	}
 }
