@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use App\Models\Type;
+use App\Models\Preference;
+use Illuminate\Support\Facades\DB;
 
 class CustomerController extends Controller
 {
@@ -18,7 +20,35 @@ class CustomerController extends Controller
     {
         //
         $customers = Customer::orderBy('id', 'asc')->paginate(5);
-        return view('manage.customers.list', ['customers' => $customers]);
+        $preferences  = Preference::all();
+        $values = DB::select('select value from customer_preference');
+        return view('manage.customers.list', compact('customers', 'preferences', 'values'));
+    }
+
+    /**
+     * Add a value to the preference.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+
+    public function add_client_preference(Request $request){
+        
+        $this->validate($request, [
+            'preference' => 'required',
+            'client_preference'=> 'required',
+        ]);
+
+        $id = $request->input('id');
+        $pref = $request->input('preference');
+        $cp = $request->input('client_preference');
+
+        $customer = Customer::findOrFail($id);
+        $customer->preferences()->attach($pref, ['value' => $cp]);        
+            
+        flash('The Preference has been added.')->important();
+        return redirect()->route('customers.index');
+
     }
 
     /**

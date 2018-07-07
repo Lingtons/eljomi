@@ -61,9 +61,13 @@
                                                     <a href="{{ route('customers.edit', ['id' => $customer->id])}}" class="item"  data-placement="top" title="Edit">
                                                         <i class="zmdi zmdi-edit"></i>
                                                     </a>
+                                                    <a href="#" data-target="#addClientPreference{{ $customer->id }}" data-toggle="modal" class="item"  data-placement="top" title="More">
+                                                        <i class="zmdi zmdi-more"></i>
+                                                    </a>
                                                     
                                                 </div>
                                             </td>
+                                            @include('include.modals.client_preferences.add_client_preference')
                                         </tr>
                                         <tr class="spacer"></tr>
                                     @endforeach

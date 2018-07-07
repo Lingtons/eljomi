@@ -28,6 +28,7 @@ Route::prefix('manage')->middleware('auth')->group(function(){
 	Route::resource('/items', 'Web\Manage\ItemController');
 	Route::resource('/expenses', 'Web\Manage\ExpenseController');
 	Route::post('/preferences_value', 'Web\Manage\PreferenceController@preferences_value')->name('preferences_value');
+	Route::post('/add_client_preference', 'Web\Manage\CustomerController@add_client_preference')->name('add_client_preference');
 
 });
 

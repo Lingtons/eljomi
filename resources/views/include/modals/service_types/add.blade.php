@@ -20,7 +20,6 @@
               </span>
               @endif
             </div>
-            
           </div>
           <div class="modal-footer">
               <button type="submit" class="btn btn-success">Save changes</button>
