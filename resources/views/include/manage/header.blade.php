@@ -23,7 +23,7 @@
                             <span class="bot-line"></span>Transaction</a>
                         <ul class="header3-sub-list list-unstyled">
                             <li>
-                                <a href="button.html" class="text-danger">New*</a>
+                                <a href="#" data-toggle="modal" data-target="#newServiceModal" class="text-danger">New*</a>
                             </li>   
                             <li>
                                 <a href="#">Transactions</a>
@@ -187,7 +187,7 @@
                                 <i class="fas fa-shopping-basket"></i>Transaction</a>
                             <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                 <li>
-                                    <a href="#" class="text-danger">New*</a>
+                                    <a href="#" data-toggle="modal" data-target="#newServiceModal" class="text-danger">New*</a>
                                 </li>   
                                 <li>
                                     <a href="#">Transactions</a>
@@ -295,6 +295,8 @@
         </div>
     </div>
 </div>
+@include('include.modals.service_types.new')
+
 <!-- END HEADER MOBILE -->
 <!-- logout post form -->
 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

@@ -27,6 +27,10 @@ Route::prefix('manage')->middleware('auth')->group(function(){
 	Route::resource('/users', 'Web\Manage\UserController');
 	Route::resource('/items', 'Web\Manage\ItemController');
 	Route::resource('/expenses', 'Web\Manage\ExpenseController');
+	Route::resource('/transactions', 'Web\Manage\TransactionController', array('except' => array('create')));
+	Route::get('/transactions/create/{id?}', 'Web\Manage\TransactionController@create')->name('transactions.create');
+
+
 	Route::post('/preferences_value', 'Web\Manage\PreferenceController@preferences_value')->name('preferences_value');
 	Route::post('/add_client_preference', 'Web\Manage\CustomerController@add_client_preference')->name('add_client_preference');
 
