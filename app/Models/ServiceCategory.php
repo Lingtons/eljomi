@@ -11,7 +11,7 @@ class ServiceCategory extends Model
     public $timestamps = false;
     
     protected $fillable = [
-        'name'
+        'name', 'hours'
     ];
 
     public function items(){

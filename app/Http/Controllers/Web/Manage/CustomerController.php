@@ -158,6 +158,25 @@ class CustomerController extends Controller
         }
     }
 
+
+    public function searchCustomer(Request $request)
+    {
+      
+    	$data = [];
+
+
+        if($request->has('q')){
+            $search = $request->q;
+            $data = DB::table("customers")
+            		->select("id","name")
+            		->where('name','LIKE',"%$search%")
+            		->get();
+        }
+       
+
+        return response()->json($data);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -167,5 +186,6 @@ class CustomerController extends Controller
     public function destroy($id)
     {
         //
+        
     }
 }

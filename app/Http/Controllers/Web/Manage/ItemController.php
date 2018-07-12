@@ -128,4 +128,18 @@ class ItemController extends Controller
     {
         //
     }
+
+    public function getItemByCategory($cat_id, $serv_type){
+        $data = Item::where('item_category_id', $cat_id)->where('service_category_id', $serv_type)->get();
+        
+        return json_encode($data);
+    }
+
+    public function getById($id){
+
+        $data = Item::find($id);
+    
+        return json_encode($data->price);
+
+    }
 }

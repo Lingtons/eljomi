@@ -31,7 +31,7 @@
                     <div class="login-content">
                         <div class="login-logo">
                             <a href="#">
-                                <img src="{{asset('images/icon/logo.png')}}" alt="CoolAdmin">
+                                <img src="{{asset('images/icon/logo-white3.png')}}" alt="CoolAdmin">
                             </a>
                         </div>
                         <div class="login-form">

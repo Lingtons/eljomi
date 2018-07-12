@@ -24,8 +24,15 @@ class TransactionController extends Controller
      */
     public function create(int $id = 0 )    
     {
-        //
-        dd($id);
+        
+        
+        if($id == 1){
+            return view('manage.transactions.individual', ['code' => 'cimpa']);
+        }elseif($id == 2){
+            return view('manage.transactions.corporate', ['code' => 'cimpp']);
+        }else{
+            return redirect()->back();
+        }
     }
 
     /**
