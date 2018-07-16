@@ -23,6 +23,7 @@ class CreateTransactionsTable extends Migration
             $table->dateTime('delivery_time');
             $table->boolean('paid');
             $table->decimal('total');
+            $table->json('collections');
             $table->string('short_note');
 
             $table->foreign('customer_id')->references('id')

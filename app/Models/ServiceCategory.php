@@ -19,4 +19,10 @@ class ServiceCategory extends Model
     	return $this->hasMany('App\Models\Item');
     	
     }
+
+    public function transactions(){
+    	return $this->hasMany('App\Models\Transaction');    	
+    }
+
+
 }

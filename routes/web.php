@@ -41,3 +41,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/customers/search', 'Web\Manage\CustomerController@searchCustomer');
 Route::get('/items/getByCategory/{category_id}/{service_type}', 'Web\Manage\ItemController@getItemByCategory');
 Route::get('/items/getById/{id}', 'Web\Manage\ItemController@getById');
+Route::post('/transactions/new', 'Web\Manage\TransactionController@newTransaction');

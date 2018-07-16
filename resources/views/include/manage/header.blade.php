@@ -26,7 +26,7 @@
                                 <a href="#" data-toggle="modal" data-target="#newServiceModal" class="text-danger">New*</a>
                             </li>   
                             <li>
-                                <a href="#">Transactions</a>
+                                <a href="{{route('transactions.index')}}">Transactions</a>
                             </li>                                
                         </ul>
                     </li>
@@ -66,17 +66,24 @@
                             <span class="bot-line"></span>Reports</a>
                         <ul class="header3-sub-list list-unstyled">
                             <li>
-                                <a href="login.html">By Client</a>
+                                <a href="#">Transactions</a>
                             </li>
                             <li>
-                                <a href="register.html">By Period</a>
+                                    <a href="#">Expenses</a>
                             </li>
                             <li>
-                                <a href="forget-pass.html">Combined</a>
+                                    <a href="#">Debts / Payments</a>
                             </li>
                             <li>
-                                <a href="forget-pass.html">Highest Spender</a>
-                            </li>                                    
+                                    <a href="#">Delivery Over-Due</a>
+                            </li>
+                            <li>
+                                    <a href="#">Profit Loss Analysis</a>
+                            </li>
+                            <li>
+                                    <a href="#">Clients Engagement</a>
+                            </li>
+                           
                         </ul>
                     </li>
                 </ul>

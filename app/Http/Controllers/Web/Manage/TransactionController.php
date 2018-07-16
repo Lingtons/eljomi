@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Web\Manage;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Transaction;
+use Carbon\Carbon;
+use App\Models\ServiceCategory;
 
 class TransactionController extends Controller
 {
@@ -14,7 +17,9 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+          
+          $transactions = Transaction::orderBy('id', 'asc')->get();
+          return view('manage.transactions.list', ['transactions' => $transactions]);
     }
 
     /**
@@ -27,9 +32,9 @@ class TransactionController extends Controller
         
         
         if($id == 1){
-            return view('manage.transactions.individual', ['code' => 'cimpa']);
+            return view('manage.transactions.individual');
         }elseif($id == 2){
-            return view('manage.transactions.corporate', ['code' => 'cimpp']);
+            return view('manage.transactions.corporate');
         }else{
             return redirect()->back();
         }
@@ -44,6 +49,8 @@ class TransactionController extends Controller
     public function store(Request $request)
     {
         //
+
+        return response()->json(['success' => 'Successfully rcieevfd']);
     }
 
     /**
@@ -55,6 +62,8 @@ class TransactionController extends Controller
     public function show($id)
     {
         //
+        $transaction = Transaction::find($id);
+        return view('manage.transactions.show', ['transaction' => $transaction]);
     }
 
     /**
@@ -89,5 +98,51 @@ class TransactionController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function newTransaction(Request $request)
+    {
+        
+
+        $total = $request->get('total');
+        $customer_id = $request->get('customer_id');
+        $transaction_code = $this->randomstr();
+        $service_category_id = $request->get('service_category_id');
+
+        $hours = ServiceCategory::findOrFail($service_category_id)->hours;
+
+        $short_note = $request->get('short_note');
+        $collections = $request->get('collections');
+        $pickup_time = Carbon::now()->toDateTimeString();
+        $due_time = Carbon::parse($pickup_time)->addHour($hours)->toDateTimeString();
+        $delivery_time =  Carbon::now()->toDateTimeString();
+        $paid = false;
+
+       $transaction = Transaction::create([
+            'customer_id' => $customer_id,
+            'service_category_id' => $service_category_id,
+            'transaction_code' => $transaction_code,
+            'pickup_time' => $pickup_time,
+            'due_time' => $due_time,
+            'delivery_time' => $delivery_time,
+            'paid' => $paid,
+            'total' => $total,
+            'short_note' => $short_note,
+            'collections' => $collections           
+        ]);
+    
+        return response()->json(['transactionId' => $transaction->id]);
+        
+    }
+
+    public function randomstr(){
+        $length = 7;
+        $keyspace = '1234567890';
+        $str = '';
+        $max = mb_strlen($keyspace, '8bit') - 1;
+        for ($i = 0; $i < $length; ++$i) {
+            $str .= $keyspace[random_int(0, $max)];
+        }        
+        return $str;
     }
 }

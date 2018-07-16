@@ -8,6 +8,9 @@
     <meta name="description" content="Lingthon Tech">
     <meta name="author" content="Lingthon">
     <meta name="keywords" content="Lingthon">
+<!-- CSRF Token -->
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 
     <!-- Title Page-->
     <title>Admin Section - @yield('title')</title>
