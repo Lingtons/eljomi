@@ -105,7 +105,7 @@ class PreferenceController extends Controller
     {
         //
         $this->validate($request, [                    
-            'name' => 'required|unique:types,name,'.$id,
+            'name' => 'required|unique:preferences,name,'.$id,
         ]);
 
         $preference = Preference::findOrFail($id);
