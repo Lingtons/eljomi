@@ -46,3 +46,4 @@ Route::get('/items/getById/{id}', 'Web\Manage\ItemController@getById');
 Route::post('/transactions/new', 'Web\Manage\TransactionController@newTransaction');
 
 Route::get('/transactions/transactionData', 'Web\Manage\TransactionController@transactionData');
+Route::get('/expenses/expenditureData', 'Web\Manage\ExpenseController@expenditureData');

@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Expense;
 use App\Models\ExpenseCategory;
-// {{-- 'name', 'expense_category_id', 'reason', 'description', 'amount', 'date_occurred' --}}
+use Carbon\Carbon;
+
+
 class ExpenseController extends Controller
 {
     /**
@@ -125,4 +127,20 @@ class ExpenseController extends Controller
     {
         //
     }
+
+    
+    public function expenditureData(){
+
+        $response = Expense::whereBetween('created_at', [
+            Carbon::now()->startOfYear(),
+            Carbon::now()->endOfYear(),
+        ])->groupBy('month')
+        ->selectRaw('sum(amount) as sum, monthname(created_at) as month')
+        ->OrderBy('month', 'DESC')->get();                                    
+        
+        //return response()->json($response);
+        return $response;
+
+
+}
 }

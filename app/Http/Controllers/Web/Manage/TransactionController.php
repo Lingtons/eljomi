@@ -166,15 +166,15 @@ class TransactionController extends Controller
 
     public function transactionData(){
 
-        $transactions = DB::table('transactions')->whereBetween('created_at', [
-            Carbon::now()->startOfYear(),
-            Carbon::now()->endOfYear(),
-        ])->groupBy(function ($e){
-            return Carbon::parse($e->created_at)->format('m');
-        })->select('created_at', DB::raw('sum(total) as total'));
-
-
-        return dd($transactions);
+            $response = Transaction::whereBetween('created_at', [
+                Carbon::now()->startOfYear(),
+                Carbon::now()->endOfYear(),
+            ])->groupBy('month')
+            ->selectRaw('sum(total) as sum, monthname(created_at) as month')
+            ->OrderBy('month', 'DESC')->get();                                    
+            
+            //return response()->json($response);
+            return $response;
 
 
     }
