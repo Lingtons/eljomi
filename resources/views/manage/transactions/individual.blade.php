@@ -122,7 +122,8 @@
     </div>
 </section>
 <!-- END DATA TABLE-->
-@stop @section('scripts')
+@stop 
+@section('scripts')
 <script src="{{ asset('vendor/select2/select2.min.js')}}"></script>
 <script type="text/javascript">
     $('input[name="qty"]').on('keyup', function () {
@@ -131,8 +132,6 @@
         $('input[name="amount"]').val(qty * price);
         //console.log(res);
     });
-
-
 
     $('.customer').select2({
         theme: 'bootstrap4',
