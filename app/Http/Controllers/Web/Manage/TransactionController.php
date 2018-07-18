@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Transaction;
 use Carbon\Carbon;
 use App\Models\ServiceCategory;
+use Illuminate\Support\Facades\DB;
+use Response;
 
 class TransactionController extends Controller
 {
@@ -160,5 +162,20 @@ class TransactionController extends Controller
             $str .= $keyspace[random_int(0, $max)];
         }        
         return $str;
+    }
+
+    public function transactionData(){
+
+        $transactions = DB::table('transactions')->whereBetween('created_at', [
+            Carbon::now()->startOfYear(),
+            Carbon::now()->endOfYear(),
+        ])->groupBy(function ($e){
+            return Carbon::parse($e->created_at)->format('m');
+        })->select('created_at', DB::raw('sum(total) as total'));
+
+
+        return dd($transactions);
+
+
     }
 }
