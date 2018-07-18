@@ -7,14 +7,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h3 class="title-5 m-b-35">Transactions</h3>
+                        <h3 class="title-5 m-b-35">Transactions <span class="text-info float-right">{{$customer->name}}</span>  </h3>
+                        
                       
                         <div class="table-responsive table--no-card m-b-30 ">
                             <table class="table table-bordered table-striped">
                                 <thead class="bg-dark-eljomi text-white">
                                     <tr>
-                                        <th>id</th>
-                                        <th>Client</th>
+                                        <th>id</th>                                       
                                         <th>Category</th>
                                         <th>Total</th>
                                         <th>Pickup Date</th>
@@ -25,11 +25,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if (count($transactions))
-                                    @foreach($transactions as $key=>$transaction)
+                                    @if (count($customer))
+                                    @foreach($customer->transactions as $key=>$transaction)
                                         <tr class="tr-shadow">
-                                            <td>{{$key + 1}}</td>
-                                            <th>{{$transaction->customer->name}}</th>
+                                            <td>{{$key + 1}}</td>                                           
                                             <td>{{$transaction->service_category->name}}</td>
                                             <td>NGN {{number_format($transaction->total, 2)}}</td>
                                             <td>{{$transaction->pickup_time->toFormattedDateString()}}</td>                                            

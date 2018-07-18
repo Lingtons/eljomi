@@ -19,10 +19,21 @@ class CustomerController extends Controller
     public function index()
     {
         //
-        $customers = Customer::orderBy('id', 'asc')->paginate(5);
+        $customers = Customer::orderBy('id', 'asc')->get();
         $preferences  = Preference::all();
         $values = DB::select('select value from customer_preference');
         return view('manage.customers.list', compact('customers', 'preferences', 'values'));
+    }
+
+    public function list($type)
+    {
+        //
+
+        $customers = Customer::WHERE('type', $type)->orderBy('id', 'asc')->get();
+
+        $preferences  = Preference::all();
+        $values = DB::select('select value from customer_preference');
+        return view('manage.customers.list_by_type', compact('customers', 'preferences', 'values', 'type' ));
     }
 
     /**
@@ -175,6 +186,13 @@ class CustomerController extends Controller
        
 
         return response()->json($data);
+    }
+
+    public function customerTransactions($id){
+        $customer = Customer::findOrFail($id);
+        return view('manage.customers.transactions', compact('customer'));
+
+
     }
 
     /**

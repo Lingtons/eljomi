@@ -86,7 +86,22 @@ class TransactionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'total' => 'required',
+            'paid' => 'required',
+            'balance' => 'required',
+            'delivered' => 'required',
+        ]);
+
+        $transaction = Transaction::findOrFail($id);
+        $transaction->paid = $request->input('paid');
+        $transaction->balance = $request->input('balance');
+        $transaction->delivered = $request->input('delivered');
+
+        if($transaction->save()){
+            flash('Transaction was successfully updated')->important();
+            return redirect()->back();
+        }
     }
 
     /**
@@ -115,7 +130,7 @@ class TransactionController extends Controller
         $collections = $request->get('collections');
         $pickup_time = Carbon::now()->toDateTimeString();
         $due_time = Carbon::parse($pickup_time)->addHour($hours)->toDateTimeString();
-        $delivery_time =  Carbon::now()->toDateTimeString();
+        $delivery_time = null;
         $paid = false;
 
        $transaction = Transaction::create([
@@ -128,7 +143,8 @@ class TransactionController extends Controller
             'paid' => $paid,
             'total' => $total,
             'short_note' => $short_note,
-            'collections' => $collections           
+            'collections' => $collections,
+            'balance' => $total
         ]);
     
         return response()->json(['transactionId' => $transaction->id]);

@@ -7,7 +7,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h3 class="title-5 m-b-35">Clients </h3>
+                        <h3 class="title-5 m-b-35">Clients <span class="text-info float-right">{{$type}}</span>  </h3>
                         <div class="table-data__tool">
                          
                             <div class="table-data__tool-right">

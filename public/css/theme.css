@@ -14639,3 +14639,7 @@ section {
 .vue-lists ul, .vue-lists ol {
     padding-left: 30px;
 }
+
+.bg-dark-eljomi{
+    background-color: #393939;
+}

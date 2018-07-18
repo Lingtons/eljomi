@@ -4,7 +4,7 @@
         <div class="header3-wrap">
             <div class="header__logo">
                 <a href="#">
-                    <img src="{{asset('images/icon/logo-white.png')}}" alt="CoolAdmin" />
+                    <img src="{{asset('images/icon/logo-white.png')}}" alt="Eljomi" />
                 </a>
             </div>
             <div class="header__navbar">
@@ -52,10 +52,10 @@
                                 <a href="{{route('customers.create')}}" class="text-danger">New*</a>
                             </li>                                       
                             <li>
-                                <a href="button.html">Individual</a>
+                                <a href="{{route('customers.type', ['type' => 'Individual'])}}">Individual</a>
                             </li>
                             <li>
-                                <a href="button.html">Corporate</a>
+                                <a href="{{route('customers.type', ['type' => 'Corporate'])}}">Corporate</a>
                             </li>                            
 
                         </ul>                                    
@@ -140,7 +140,7 @@
                                     <div class="account-dropdown__body">
                                         <div class="account-dropdown__item">
                                             <a href="#">
-                                                <i class="zmdi zmdi-account"></i>Account</a>
+                                                <i class="zmdi zmdi-lock"></i>Change Password</a>
                                         </div>
 
                                     </div>
@@ -165,7 +165,7 @@
         <div class="container-fluid">
             <div class="header-mobile-inner">
                 <a class="logo" href="index.html">
-                    <img src="images/icon/logo-white.png" alt="CoolAdmin" />
+                    <img src="{{asset('images/icon/logo-white.png')}}" alt="Eljomi" />
                 </a>
                 <button class="hamburger hamburger--slider" type="button">
                     <span class="hamburger-box">
@@ -289,7 +289,7 @@
 
                         <div class="account-dropdown__item">
                             <a href="#">
-                                <i class="zmdi zmdi-account"></i>Account</a>
+                                <i class="zmdi zmdi-lock"></i>Change Password</a>
                         </div>
                     </div>
                     <div class="account-dropdown__footer">
