@@ -8,6 +8,9 @@
     <meta name="description" content="Lingthon Tech">
     <meta name="author" content="Lingthon">
     <meta name="keywords" content="Lingthon">
+<!-- CSRF Token -->
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 
     <!-- Title Page-->
     <title>Admin Section - @yield('title')</title>
@@ -28,6 +31,7 @@
     <link href="{{ asset('vendor/css-hamburgers/hamburgers.min.css')}}" rel="stylesheet" media="all">
     <link href="{{ asset('vendor/slick/slick.css')}}" rel="stylesheet" media="all">
     <link href="{{ asset('vendor/select2/select2.min.css')}}" rel="stylesheet" media="all">
+    <link href="{{ asset('vendor/select2/select2-bootstrap4.css')}}" rel="stylesheet" media="all">
     <link href="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.css')}}" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
@@ -87,11 +91,13 @@
     <script src="{{ asset('vendor/circle-progress/circle-progress.min.js')}}"></script>
     <script src="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.js')}}"></script>
     <script src="{{ asset('vendor/chartjs/Chart.bundle.min.js')}}"></script>
-    <script src="{{ asset('vendor/select2/select2.min.js')}}">
+    
     </script>
 
     <!-- Main JS-->
     <script src="{{ asset('js/main.js')}}"></script>
+    
+    @yield('scripts')
 
 </body>
 

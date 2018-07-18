@@ -11,7 +11,7 @@ class ServiceCategory extends Model
     public $timestamps = false;
     
     protected $fillable = [
-        'name'
+        'name', 'hours'
     ];
 
     public function items(){
@@ -19,4 +19,10 @@ class ServiceCategory extends Model
     	return $this->hasMany('App\Models\Item');
     	
     }
+
+    public function transactions(){
+    	return $this->hasMany('App\Models\Transaction');    	
+    }
+
+
 }

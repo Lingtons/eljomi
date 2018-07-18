@@ -19,10 +19,21 @@ class CustomerController extends Controller
     public function index()
     {
         //
-        $customers = Customer::orderBy('id', 'asc')->paginate(5);
+        $customers = Customer::orderBy('id', 'asc')->get();
         $preferences  = Preference::all();
         $values = DB::select('select value from customer_preference');
         return view('manage.customers.list', compact('customers', 'preferences', 'values'));
+    }
+
+    public function list($type)
+    {
+        //
+
+        $customers = Customer::WHERE('type', $type)->orderBy('id', 'asc')->get();
+
+        $preferences  = Preference::all();
+        $values = DB::select('select value from customer_preference');
+        return view('manage.customers.list_by_type', compact('customers', 'preferences', 'values', 'type' ));
     }
 
     /**
@@ -158,6 +169,32 @@ class CustomerController extends Controller
         }
     }
 
+
+    public function searchCustomer(Request $request)
+    {
+      
+    	$data = [];
+
+
+        if($request->has('q')){
+            $search = $request->q;
+            $data = DB::table("customers")
+            		->select("id","name")
+            		->where('name','LIKE',"%$search%")
+            		->get();
+        }
+       
+
+        return response()->json($data);
+    }
+
+    public function customerTransactions($id){
+        $customer = Customer::findOrFail($id);
+        return view('manage.customers.transactions', compact('customer'));
+
+
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -167,5 +204,6 @@ class CustomerController extends Controller
     public function destroy($id)
     {
         //
+        
     }
 }

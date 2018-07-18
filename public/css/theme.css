@@ -879,7 +879,7 @@ section {
 .select2-container {
     display: block;
     max-width: 100% !important;
-    width: auto !important;
+    width: auto;
     outline: none;
 }
 
@@ -14638,4 +14638,8 @@ section {
 
 .vue-lists ul, .vue-lists ol {
     padding-left: 30px;
+}
+
+.bg-dark-eljomi{
+    background-color: #393939;
 }

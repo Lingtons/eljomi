@@ -24,11 +24,14 @@ Route::prefix('manage')->middleware('auth')->group(function(){
 	Route::resource('/types', 'Web\Manage\TypeController');
 	Route::resource('/preferences', 'Web\Manage\PreferenceController');
 	Route::resource('/customers', 'Web\Manage\CustomerController');
+	Route::get('/customers/type/{type}', 'Web\Manage\CustomerController@list')->name('customers.type');
+	
 	Route::resource('/users', 'Web\Manage\UserController');
 	Route::resource('/items', 'Web\Manage\ItemController');
 	Route::resource('/expenses', 'Web\Manage\ExpenseController');
 	Route::resource('/transactions', 'Web\Manage\TransactionController', array('except' => array('create')));
 	Route::get('/transactions/create/{id?}', 'Web\Manage\TransactionController@create')->name('transactions.create');
+	Route::get('/customerTransactions/{id}', 'Web\Manage\CustomerController@customerTransactions')->name('customer.transactions');
 
 
 	Route::post('/preferences_value', 'Web\Manage\PreferenceController@preferences_value')->name('preferences_value');
@@ -37,4 +40,7 @@ Route::prefix('manage')->middleware('auth')->group(function(){
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('/customers/search', 'Web\Manage\CustomerController@searchCustomer');
+Route::get('/items/getByCategory/{category_id}/{service_type}', 'Web\Manage\ItemController@getItemByCategory');
+Route::get('/items/getById/{id}', 'Web\Manage\ItemController@getById');
+Route::post('/transactions/new', 'Web\Manage\TransactionController@newTransaction');

@@ -9,7 +9,11 @@ class PreferenceValue extends Model
     //
     public $timestamps = false;
 
+
     protected $fillable = [
-        'name', 'preference_id', 
+
+        'name', 'preference_id', ''
     ];
+
+
 }

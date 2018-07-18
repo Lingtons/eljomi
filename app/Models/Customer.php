@@ -18,5 +18,11 @@ class Customer extends Model
   	{
       	return $this->belongsToMany('App\Models\Preference')
         ->withPivot('value');
-  	}
+    }
+      
+    public function transactions(){
+
+    	return $this->hasMany('App\Models\Transaction');
+    	
+    }
 }
