@@ -39,7 +39,6 @@
                                 <thead>
                                     <tr>
                                         <th>id</th>
-                                        <th>name</th>
                                         <th>reason</th>
                                         <th>amount</th>
                                         <th>Date</th>
@@ -52,7 +51,6 @@
                                     @foreach($expenses as $expense)
                                         <tr class="tr-shadow">
                                             <td>{{$expense->id}}</td>
-                                            <td>{{$expense->name}}</td>
                                             <td>{{$expense->reason}}</td>
                                             <td>{{$expense->amount}}</td>
                                             <td>{{$expense->date_occurred}}</td>
