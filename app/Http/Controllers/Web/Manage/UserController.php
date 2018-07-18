@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Web\Manage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use DB;
+use Hash;
 
 class UserController extends Controller
 {
@@ -28,6 +30,7 @@ class UserController extends Controller
     public function create()
     {
         //
+        // return view('manage.users.create');
     }
 
     /**
@@ -39,6 +42,21 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+        'name' => 'required|max:255',
+        'email' => 'required|email|unique:users'
+      ]);
+
+      $user = new User();
+      $user->name = $request->name;
+      $user->email = $request->email;
+      $password = "password";
+      $user->password = Hash::make($password);
+      $user->save();
+
+      flash('The User '.$user->name.' was created successfully')->important();
+      return redirect()->back();
+
     }
 
     /**
@@ -50,6 +68,8 @@ class UserController extends Controller
     public function show($id)
     {
         //
+        // $user = User::where('id', $id)->first();
+        // return view("manage.users.show");
     }
 
     /**
@@ -61,6 +81,8 @@ class UserController extends Controller
     public function edit($id)
     {
         //
+        // $user = User::where('id', $id)->first();
+        // return view("manage.users.edit")->withUser($user);
     }
 
     /**
@@ -73,6 +95,20 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request, [
+        'name' => 'required|max:255',
+        'email' => 'required|email|unique:users,email,'.$id
+      ]);
+
+      $user = User::findOrFail($id);
+      $user->name = $request->name;
+      $user->email = $request->email;
+      
+      if($user->save()){
+            flash('The User '.$user->name.' was successfully updated')->important();
+            return redirect()->back();
+        }
+
     }
 
     /**

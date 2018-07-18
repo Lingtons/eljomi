@@ -28,7 +28,6 @@ class CreateTransactionsTable extends Migration
             $table->decimal('balance')->nullable();
             $table->boolean('delivered')->default(false);
             
-
             $table->foreign('customer_id')->references('id')
             ->on('customers')->onDelete('cascade');
 
