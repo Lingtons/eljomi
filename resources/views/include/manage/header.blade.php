@@ -139,10 +139,9 @@
                                     </div>
                                     <div class="account-dropdown__body">
                                         <div class="account-dropdown__item">
-                                            <a href="#">
+                                            <a href="#" data-toggle="modal" data-target="#resetPasswordModal">
                                                 <i class="zmdi zmdi-lock"></i>Change Password</a>
                                         </div>
-
                                     </div>
                                     <div class="account-dropdown__footer">
                                         <a href="{{route('logout')}}" onclick="event.preventDefault();
@@ -288,8 +287,9 @@
                     <div class="account-dropdown__body">
 
                         <div class="account-dropdown__item">
-                            <a href="#">
-                                <i class="zmdi zmdi-lock"></i>Change Password</a>
+                            <a href="#" data-toggle="modal" data-target="#resetPasswordModal">
+                                <i class="zmdi zmdi-lock"></i>Change Password
+                            </a>
                         </div>
                     </div>
                     <div class="account-dropdown__footer">
@@ -303,6 +303,7 @@
     </div>
 </div>
 @include('include.modals.service_types.new')
+@include('include.modals.password.password_reset')
 
 <!-- END HEADER MOBILE -->
 <!-- logout post form -->
