@@ -29,7 +29,7 @@ if (ctx) {
       labels: trmonths,
       datasets: [
         {
-          label: "My First dataset",
+          label: "Sum of Transactions",
           data: trtotals,
           borderColor: [
             'rgba(255,99,132,1)',
@@ -110,7 +110,7 @@ if (ctx) {
       labels: exmonths,
       datasets: [
         {
-          label: "My First dataset",
+          label: "Sum of Expenses",
           data: extotals,
           borderColor: [
             'rgba(255,99,132,1)',
@@ -182,7 +182,7 @@ if (ctx) {
 
 })(jQuery);
  */
-/* (function ($) {
+(function ($) {
   // USE STRICT
   "use strict";
 
@@ -312,4 +312,4 @@ if (ctx) {
     console.log(error);
   }
 
-})(jQuery); */
+})(jQuery); 

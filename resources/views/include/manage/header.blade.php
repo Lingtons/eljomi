@@ -22,6 +22,7 @@
                             <i class="fas fa-shopping-basket"></i>
                             <span class="bot-line"></span>Transaction</a>
                         <ul class="header3-sub-list list-unstyled">
+                          
                             <li>
                                 <a href="#" data-toggle="modal" data-target="#newServiceModal" class="text-danger">New*</a>
                             </li>   
@@ -64,34 +65,32 @@
                         <a href="#">
                             <i class="fas fa-bar-chart"></i>
                             <span class="bot-line"></span>Reports</a>
-                        <ul class="header3-sub-list list-unstyled">
+                        <ul class="header3-sub-list list-unstyled">  
                             <li>
-                                <a href="#">Transactions</a>
+                                <a href="{{route('reports.today')}}">Today's Delivery</a>
+                            </li>                        
+                            <li>
+                                <a href="{{route('reports.pending')}}">Pending Delivery</a>
                             </li>
                             <li>
-                                    <a href="#">Expenses</a>
+                                    <a href="{{route('reports.overdue')}}">Over-Due Delivery</a>
+                            </li>                            
+                            <li>
+                                    <a href="{{route('reports.debt')}}">Debts</a>
                             </li>
                             <li>
-                                    <a href="#">Debts / Payments</a>
+                                    <a href="{{route('reports.highspend')}}">Highest Spender</a>
                             </li>
+
                             <li>
-                                    <a href="#">Delivery Over-Due</a>
-                            </li>
-                            <li>
-                                    <a href="#">Profit Loss Analysis</a>
-                            </li>
-                            <li>
-                                    <a href="#">Clients Engagement</a>
-                            </li>
-                           
+                                    <a href="{{url('/manage')}}">Profit Loss Analysis</a>
+                            </li>                           
                         </ul>
                     </li>
                 </ul>
                     </div>
                     <div class="header__tool">
-                        <div class="header-button-item has-noti js-item-menu">
-                            <i class="zmdi zmdi-notifications"></i>                            
-                        </div>
+
                         <div class="header-button-item js-item-menu">
                             <i class="zmdi zmdi-settings"></i>
                             <div class="setting-dropdown js-dropdown">
@@ -115,10 +114,17 @@
                                 </div>                                
                             </div>
                         </div>
+                        <div class="header-button-item has-noti ">                            
+                                <a href="#"  data-toggle="modal" data-target="#resetPasswordModal">
+                                        <i class="zmdi zmdi-lock text-danger"></i>
+                                    </a>
+                        
+                        <!-- <i class="zmdi zmdi-notifications"></i>                             -->
+                </div>
                         <div class="account-wrap">
                             <div class="account-item account-item--style2 clearfix js-item-menu">
                                 <div class="image">
-                                    <img src="{{asset('images/icon/avatar-01.jpg')}}" alt="logged user" />
+                                    <img src="{{asset('images/icon/user.png')}}" alt="logged user" />
                                 </div>
                                 <div class="content">
                                     <a class="js-acc-btn" href="#">{{substr(auth()->user()->name, 0, 11)}}..</a>
@@ -127,7 +133,7 @@
                                     <div class="info clearfix">
                                         <div class="image">
                                             <a href="#">
-                                                <img src="{{asset('images/icon/avatar-01.jpg')}}" alt="John Doe" />
+                                                <img src="{{asset('images/icon/user.png')}}" alt="Eljomi" />
                                             </a>
                                         </div>
                                         <div class="content">
@@ -136,13 +142,7 @@
                                             </h5>
                                             <span class="email">{{auth()->user()->email}}</span>
                                         </div>
-                                    </div>
-                                    <div class="account-dropdown__body">
-                                        <div class="account-dropdown__item">
-                                            <a href="#" data-toggle="modal" data-target="#resetPasswordModal">
-                                                <i class="zmdi zmdi-lock"></i>Change Password</a>
-                                        </div>
-                                    </div>
+                                    </div>                              
                                     <div class="account-dropdown__footer">
                                         <a href="{{route('logout')}}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -265,7 +265,7 @@
         <div class="account-wrap">
             <div class="account-item account-item--style2 clearfix js-item-menu">
                 <div class="image">
-                    <img src="{{asset('images/icon/avatar-01.jpg')}}" alt="John Doe" />
+                    <img src="{{asset('images/icon/user.png')}}" alt="Eljomi" />
                 </div>
                 <div class="content">
                     <a class="js-acc-btn" href="#">{{auth()->user()->name}}</a>
@@ -274,7 +274,7 @@
                     <div class="info clearfix">
                         <div class="image">
                             <a href="#">
-                                <img src="{{asset('images/icon/avatar-01.jpg')}}" alt="John Doe" />
+                                <img src="{{asset('images/icon/user.png')}}" alt="John Doe" />
                             </a>
                         </div>
                         <div class="content">
