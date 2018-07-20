@@ -19,8 +19,7 @@
                             <table class="table table-bordered table-striped table-earning">
                                 <thead>
                                     <tr>
-                                        <th>id</th>
-                                        <th>id</th>  
+                                        <th>id</th>                                          
                                         <th>Expense Category</th>                                      
                                         <th>reason</th>
                                         <th>Description</th>
@@ -33,9 +32,8 @@
                                     @if (count($expenses))
                                     @foreach($expenses as $expense)
                                         <tr class="tr-shadow">
-                                            <td>{{$expense->id}}</td>
                                             <td>{{$expense->id}}</td>                                            
-                                            <th>{{$expense->expense_category->name}}</th>
+                                            <td>{{$expense->expense_category->name}}</td>
                                             <td>{{$expense->reason}}</td>
                                             <td>{{$expense->description}}</td>
                                             <td>NGN {{number_format($expense->amount, 2)}}</td>

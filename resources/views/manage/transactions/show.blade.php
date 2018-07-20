@@ -1,61 +1,63 @@
-@extends('layouts.manage')
+@extends('layouts.invoice')
 @section('title', 'Transaction Reciept')
 
 @section('content')
     <!-- DATA TABLE-->
         <section class="p-t-20">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        
-                <!--         <div class="col-md-6">                                                          
-                              <table class="table table-striped table-bordered">
-                                  <tbody>
-                                      <tr>
-                                          <td>Name</td>
-                                          <td>{{$transaction->customer->name}}</td>
-                                      </tr>
-                                      <tr>
-                                            <td>Phone</td>
-                                            <td>{{$transaction->customer->phone}}</td>
-                                      </tr>
-                                      <tr>
-                                            <td>Address</td>
-                                            <td>{{$transaction->customer->address}}</td>
-                                      </tr>
-                                  </tbody>
+            <div class="container-fluid">
+                    <h3 class="title-5 mb-2">Invoice | {{$transaction->transaction_code}} <span class="float-right">{{$transaction->service_category->name}} Service</span></h3>
+                <div class="row">                        
+                    <div class="col-md-6">
+                            <table class="table table-striped">
+                                <tbody>
+                                    @if ($transaction)                                    
+                                        <tr class="tr-shadow">                                            
+                                            <td>Name:</td>
+                                            <td>{{$transaction->customer->name}}</td>                                            
+                                        </tr>
+                                        <tr class="tr-shadow">                                                                                            
+                                                <td>Phone:</td>
+                                                <td>{{$transaction->customer->phone}}</td>                                            
+                                        </tr>
+                                        <tr class="tr-shadow">                                                                                            
+                                                <td>Address:</td>
+                                                <td>{{$transaction->customer->address}}</td>                                            
+                                        </tr>                                        
+                                        <tr class="spacer"></tr>                                    
+                                    @endif
+                                </tbody>
+                            </table>
 
-                              </table>
-                           
-
-                        </div>
-                        <div class="col-md-6 ">
-                            
-                               
-                                  <table class="table table-striped table-bordered">
-                                      <tbody>
-                                          <tr>
-                                              <td>Collection Date</td>
-                                              <td>{{$transaction->pickup_time->toFormattedDateString()}}</td>
-                                          </tr>
-                                          <tr>
-                                                <td>Delivery Date</td>
-                                                <td>{{$transaction->due_time->toFormattedDateString()}}</td>
-                                          </tr>
-                                          
-                                      </tbody>
-    
-                                  </table>
-                               
-
-                        </div> -->
                     </div>
-                    <div class="col-md-12">
-                        <h3 class="title-5 m-b-35">Invoice | {{$transaction->transaction_code}}</h3>
-                      
+                    <div class="col-md-6">
+                            <table class="table table-striped">
+                                <tbody>
+                                    @if ($transaction)                                    
+                                        <tr class="tr-shadow">                                            
+                                            <td>Collection Date :</td>
+                                            <td>{{$transaction->pickup_time->toFormattedDateString()}}</td>                                            
+                                        </tr>
+                                        <tr class="tr-shadow">                                            
+                                                <td>Expected Delivery Date :</td>
+                                                <td>{{$transaction->due_time->toFormattedDateString()}}</td>                                            
+                                        </tr>
+                                        <tr class="tr-shadow">                                            
+                                                <td>Payment Status :</td>
+                                                <td>Paid</td>                                            
+                                        </tr>                                        
+                                        <tr class="spacer"></tr>                                    
+                                    @endif
+                                </tbody>
+                            </table>
+
+                    </div>
+                    
+                    
+                    <div class="col-md-8 mt-5">                                              
                         <div class="table-responsive table--no-card m-b-30 ">
-                            <table class="table table-bordered table-striped table-earning">
-                                <thead>
+                                <table class="table table-bordered table-striped">
+                                    <thead class="bg-dark-eljomi text-white">
+    
                                     <tr>
                                         <th>id</th>
                                         <th>Item</th>
@@ -80,12 +82,75 @@
                                         <tr class="spacer"></tr>
                                     @endforeach
                                     @endif
-                                </tbody>
+                                    <tr>
+                                        <th colspan="4">Total</th>
+                                        <td><strong> NGN {{number_format($transaction->total,2)}}</strong></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="6">
+                                        Amount in Words :   <em>  {{ ucwords(formatCur()->format($transaction->total)) }} Naira Only</em>
+                                        </td>                                        
+                                    </tr>
+                                </tbody>                                
+                            </table>
+                            <table class="table table-bordered mt-5">
+                                <thead>
+                                    <tr>
+                                        <td>Deposit</td>
+                                        <td><strong> NGN {{number_format($transaction->paid,2)}}</strong></td>
+
+                                    </tr>
+                                    <tr>
+                                            <td>Balance</td>
+                                            <td><strong> NGN {{number_format($transaction->balance,2)}}</strong></td>
+    
+                                        </tr>
+                                </thead>
                             </table>
                         </div>
                     </div>
+
+                    <div class="col-md-4 mt-5">                                              
+                            <div class="table-responsive table--no-card m-b-30 ">
+                                    <table class="table table-bordered table-striped">
+                                        <thead class="bg-dark-eljomi text-white">
+        
+                                        <tr>
+                                            <th colspan="2">Preference</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if ($transaction)
+                                        @foreach($transaction->customer->preferences as $key => $preference)
+                                            <tr class="tr-shadow">                                                
+                                                <td>{{$preference->name}}</td>
+                                                <td>{{$preference->pivot->value}}</td>
+                                            </tr>
+                                            <tr class="spacer"></tr>
+                                        @endforeach
+                                        @endif
+                                    </tbody>
+                                </table>                                               
+                            </div>
+                            <p class="mt-2 p-2">
+                                    <em class="mr-2">Note:</em>
+                                    <br>
+                                    Please check your pockets before submitting your clothing in case of any item there in.
+                                    <br><br>
+                                    We will not be responsible for any shrinkage, fading colour-run or broken buttons/breads although all necessary precautions will
+                                    be taken.
+                                    <br><br>
+                                    We will not be responsible for items not claimed after one month from the date of deposit.
+                                </p>       
+                        </div>
                 </div>
+
+                
             </div>
+            
         </section>
+        
     <!-- END DATA TABLE-->
 @stop
