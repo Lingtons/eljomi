@@ -33,9 +33,16 @@ Route::prefix('manage')->middleware('auth')->group(function(){
 	Route::get('/transactions/create/{id?}', 'Web\Manage\TransactionController@create')->name('transactions.create');
 	Route::get('/customerTransactions/{id}', 'Web\Manage\CustomerController@customerTransactions')->name('customer.transactions');
 
+	Route::get('/debts', 'Web\Manage\ReportsController@debts')->name('reports.debt');
+	Route::get('/today', 'Web\Manage\ReportsController@todayDelivery')->name('reports.today');
+	Route::get('/pending', 'Web\Manage\ReportsController@pendingDelivery')->name('reports.pending');
+	Route::get('/overdue', 'Web\Manage\ReportsController@overdueDelivery')->name('reports.overdue');
+	Route::get('/highestspend', 'Web\Manage\ReportsController@highestSpender')->name('reports.highspend');
+
 
 	Route::post('/preferences_value', 'Web\Manage\PreferenceController@preferences_value')->name('preferences_value');
 	Route::post('/add_client_preference', 'Web\Manage\CustomerController@add_client_preference')->name('add_client_preference');
+
 
 });
 

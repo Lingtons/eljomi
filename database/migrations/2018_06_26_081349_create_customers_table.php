@@ -24,6 +24,7 @@ class CreateCustomersTable extends Migration
             $table->date('dob')->nullable();
             $table->enum('gender', ['Female', 'Male']);
             $table->string('type');
+            $table->decimal('point')->default(0);
             $table->timestamps();            
         });
     }
