@@ -23,7 +23,7 @@ class ReportsController extends Controller
     public function todayDelivery()
     {
           
-        $transactions = Transaction::where('delivered', 0)->whereDate('due_time', Carbon::today())->orderBy('created_at', 'desc')->get();        
+        $transactions = Transaction::where('delivered', 1)->whereDate('due_time', Carbon::today())->orderBy('created_at', 'desc')->get();        
         return view('manage.reports.today_delivery', ['transactions' => $transactions]);
     }
 
