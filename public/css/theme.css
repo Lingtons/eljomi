@@ -375,12 +375,14 @@ section {
 }
 
 .login-content {
-    background: #fff;
+    background: #212121;
     padding: 30px 30px 20px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
+    color:whitesmoke;
 }
+
 
 .social-login-content {
     border-top: 1px solid #e7e7e7;

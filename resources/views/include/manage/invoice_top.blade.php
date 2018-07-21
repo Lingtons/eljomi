@@ -1,4 +1,4 @@
-<section class="p-t-30 p-b-30 bg-success">
+<section class="p-t-5 p-b-5 bg-success">
     <div class="container">
         <div class="row">
             <div class="col-md-8">

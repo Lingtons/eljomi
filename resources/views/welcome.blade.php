@@ -20,18 +20,34 @@
 
     <!-- Main CSS-->
     <link href="{{ asset('css/theme.css') }}" rel="stylesheet" media="all">
+    <link rel="shortcut icon" href="{{asset('images/icon/favicon.ico')}}" type="image/x-icon">
+<link rel="icon" href="{{asset('images/icon/favicon.ico')}}" type="image/x-icon">
+<style>
+    body { 
+  background: url({{asset('images/icon/laundry_pegs.jpg')}}) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
+.login-wrap {
+opacity: 0.6;
+margin-top:30px;
+}
+
+</style>
 </head>
 
 <body class="animsition">
     <div class="page-wrapper">
-        <div class="page-content--bge5">
+        <div class="">
             <div class="container">
                 <div class="login-wrap">
                     <div class="login-content">
                         <div class="login-logo">
                             <a href="#">
-                                <img src="{{asset('images/icon/logo-white3.png')}}" alt="CoolAdmin">
+                                <img src="{{asset('images/icon/logo-login.png')}}" alt="Eljomi">
                             </a>
                         </div>
                         <div class="login-form">
@@ -56,15 +72,7 @@
                                     </span>
                                 @endif
 
-                                </div>
-                                <div class="login-checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember"  {{ old('remember') ? 'checked' : '' }}>Remember Me
-                                    </label>
-                                    <label>
-                                        <a href="{{ route('password.request') }}">Forgotten Password?</a>
-                                    </label>
-                                </div>
+                                </div>                           
                                 <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
                             </form>
                         </div>

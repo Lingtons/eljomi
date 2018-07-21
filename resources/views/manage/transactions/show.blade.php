@@ -43,7 +43,7 @@
                                         </tr>
                                         <tr class="tr-shadow">                                            
                                                 <td>Payment Status :</td>
-                                                <td>Paid</td>                                            
+                                                <td>{{$transaction->paid < $transaction->total ? 'Not Paid' : 'Paid' }} </td>                                            
                                         </tr>                                        
                                         <tr class="spacer"></tr>                                    
                                     @endif
@@ -56,7 +56,7 @@
                     <div class="col-md-8 mt-5">                                              
                         <div class="table-responsive table--no-card m-b-30 ">
                                 <table class="table table-bordered table-striped">
-                                    <thead class="bg-dark-eljomi text-white">
+                                    <thead class="">
     
                                     <tr>
                                         <th>id</th>
@@ -106,6 +106,19 @@
                                             <td><strong> NGN {{number_format($transaction->balance,2)}}</strong></td>
     
                                         </tr>
+                                        <tr>
+                                            <td colspan="1"></td>
+                                        </tr>
+                                        <tr>
+                                            
+                                            <td>Customer Sign</td>
+                                            <td>______________________</td>
+                                        </tr>
+                                        <tr>
+                                            
+                                            <td>For Eljomi</td>
+                                            <td>______________________</td>
+                                        </tr>
                                 </thead>
                             </table>
                         </div>
@@ -114,7 +127,7 @@
                     <div class="col-md-4 mt-5">                                              
                             <div class="table-responsive table--no-card m-b-30 ">
                                     <table class="table table-bordered table-striped">
-                                        <thead class="bg-dark-eljomi text-white">
+                                        <thead class="">
         
                                         <tr>
                                             <th colspan="2">Preference</th>
