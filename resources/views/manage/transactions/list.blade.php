@@ -41,7 +41,6 @@
                                                     <a href="#" data-toggle="modal" class="item" data-target="#addPaymentModal{{$transaction->id}}"  data-placement="top" title="Edit">
                                                         <i class="zmdi zmdi-money-box"></i>
                                                     </a> 
-
                                                     
                                                     <a href="{{ route('transactions.show', ['id' => $transaction->id])}}" class="item"  data-placement="top" title="Edit">
                                                             <i class="zmdi zmdi-print"></i>

@@ -9,7 +9,7 @@
           </button>
         </div>
         <div class="modal-body">
-            <form class="form-horizontal" method="POST" action="{{ route('transactions.update', $transaction->id) }}">
+            <form class="form-horizontal" id="{{ $transaction->id }}" method="POST" action="{{ route('transactions.update', $transaction->id) }}">
                 {{ csrf_field() }}    
                 <div class="form-group">
                   <div class="col-md-12 mb-2">
@@ -51,8 +51,11 @@
 
   @section('scripts')
 <script type="text/javascript">
+
     $('input[name="paid"]').on('keyup', function () {
         var paid = $(this).val();
+        // var idd = $(this).closest('form');
+        // console.log(idd);
         var total = $('input[name="total"]').val();
         var balance = total - paid;
         if(balance < 0){
