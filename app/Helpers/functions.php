@@ -36,4 +36,13 @@ function strip($reponse) {
 
 }
 
+function formatCur(){
+
+$f = new \NumberFormatter("en", \NumberFormatter::SPELLOUT);
+
+return $f;
+
+
+}
+
 ?>

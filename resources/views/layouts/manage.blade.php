@@ -8,6 +8,9 @@
     <meta name="description" content="Lingthon Tech">
     <meta name="author" content="Lingthon">
     <meta name="keywords" content="Lingthon">
+
+    <link rel="shortcut icon" href="{{asset('images/icon/favicon.ico')}}" type="image/x-icon">
+<link rel="icon" href="{{asset('images/icon/favicon.ico')}}" type="image/x-icon">
 <!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
 

@@ -85,6 +85,9 @@
                             <li>
                                     <a href="{{url('/manage')}}">Profit Loss Analysis</a>
                             </li>                           
+                            <li>
+                                <a href="{{url('/manage')}}">Client Birthday</a>
+                            </li>                           
                         </ul>
                     </li>
                 </ul>
