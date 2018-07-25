@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use DB;
 use Hash;
+use Auth;
 
 class UserController extends Controller
 {
@@ -107,6 +108,30 @@ class UserController extends Controller
       if($user->save()){
             flash('The User '.$user->name.' was successfully updated')->important();
             return redirect()->back();
+        }
+
+    }
+
+
+    public function reset(Request $request)
+    {
+        //
+        $this->validate($request, [                
+        'password' => 'required|string|min:6|confirmed',
+      ]);
+
+
+      $user = User::findOrFail(Auth::user()->id);
+
+      $user->password = bcrypt($request->password);
+      
+      if($user->save()){
+            flash('Password was successfully updated')->important();
+            return redirect()->back()->with(Auth::logout());
+        }else{
+            flash('Error ! not updated')->error();
+            return redirect()->back();
+
         }
 
     }

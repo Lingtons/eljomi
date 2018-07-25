@@ -9,27 +9,22 @@
         </button>
       </div>
       <div class="modal-body">
-        <form class="form-horizontal" method="POST" action="#">
+        <form class="form-horizontal" method="POST" action="{{route('reset_password')}}">
           {{ csrf_field() }}
           <div class="form-group">
+
             <div class="col-md-12">
-              <input id="password" type="text" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="password"
-                required> @if ($errors->has('password'))
-              <span class="help-block">
-                <strong>{{ $errors->first('password') }}</strong>
-              </span>
-              @endif
+              <input id="password" type="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Password"
+                required> 
             </div>
             <div class="col-md-12">
-              <input id="password_confirmation" type="text" class="form-control {{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}" name="password_confirmation" placeholder="Confirm password"
-                required> @if ($errors->has('password_confirmation'))
-              <span class="help-block">
-                <strong>{{ $errors->first('password_confirmation') }}</strong>
-              </span>
-              @endif
+              <input id="password_confirmation" type="password" class="form-control {{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}" name="password_confirmation" placeholder="Confirm password"
+                required>
             </div>
           </div>
           <div class="modal-footer">
+              <input type="hidden" name="_token" value="{{ Session::token() }}">  
+              <input name="_method" type="hidden" value="PUT">
               <button type="submit" class="btn btn-success">Reset Password</button>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
            

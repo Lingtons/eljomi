@@ -40,6 +40,8 @@ Route::prefix('manage')->middleware('auth')->group(function(){
 	Route::get('/highestspend', 'Web\Manage\ReportsController@highestSpender')->name('reports.highspend');
 	Route::get('/birthday', 'Web\Manage\ReportsController@monthBirthday')->name('reports.birthday');
 
+	Route::put('/reset_password', 'Web\Manage\UserController@reset')->name('reset_password');
+
 
 	Route::post('/preferences_value', 'Web\Manage\PreferenceController@preferences_value')->name('preferences_value');
 	Route::post('/add_client_preference', 'Web\Manage\CustomerController@add_client_preference')->name('add_client_preference');

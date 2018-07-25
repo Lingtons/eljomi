@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                    <img src="{{asset('images/icon/logo-white3.png')}}" alt="Eljomi" />
+              <a href="{{route('transactions.index')}}"> <img src="{{asset('images/icon/logo-white3.png')}}" alt="Eljomi" /> </a>      
             </div>
             <div class="col-md-6">
 <address class="text-white">
