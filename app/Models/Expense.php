@@ -17,4 +17,6 @@ class Expense extends Model
 
     	return $this->belongsTo('App\Models\ExpenseCategory', 'expense_category_id');
     }
+
+    protected $dates = ['date_occurred'];
 }

@@ -16,7 +16,7 @@ class ReportsController extends Controller
     public function debts()
     {
           
-          $transactions = Transaction::where('delivered', 0)->where('balance', '>', 0)->orderBy('created_at', 'desc')->get();
+          $transactions = Transaction::where('balance', '>', 0)->orderBy('created_at', 'desc')->get();
           return view('manage.reports.debts', ['transactions' => $transactions]);
     }
 
@@ -46,5 +46,12 @@ class ReportsController extends Controller
         $customers = Customer::orderBy('point', 'desc')->get();
         
         return view('manage.reports.highspender', compact('customers'));        
+    }
+
+    public function monthBirthday()
+    {
+        $customers = Customer::whereMonth('dob', Carbon::now()->month)->get();
+        
+        return view('manage.reports.birthday', compact('customers'));        
     }
 }

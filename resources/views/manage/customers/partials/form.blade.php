@@ -69,7 +69,7 @@
         	@if ($errors->has('dob'))
             	<span class="help-block">{{ $errors->first('dob') }}</span>
             @endif
-        	{!! Form::date('dob', old('dob'), ['class'=>'form-control ', 'placeholder'=>'Date of birth', 'required']) !!}
+        	{!! Form::date('dob', old('dob'), ['class'=>'form-control ', 'placeholder'=>'Date of birth']) !!}
         </div>
     </div>
 </div>
@@ -97,8 +97,7 @@
            		<span class="help-block"> {{ $errors->first('address') }}</span>
             @endif
         </div>
-    </div>
-    
+    </div>    
 </div>
 
 <div>

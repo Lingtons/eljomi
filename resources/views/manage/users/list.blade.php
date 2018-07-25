@@ -17,7 +17,7 @@
                         @include('include.modals.users.add')
                     </div>
                     <div class="table-responsive table--no-card m-b-30 ">
-                        <table class="table table-bordered table-striped">
+                        <table class="table table-bordered table-striped" id="datatable">
                             <thead class="bg-dark-eljomi text-white">
                                 <tr>
                                     <th>Id</th>
@@ -42,7 +42,7 @@
                                         </td>
                                         @include('include.modals.users.edit')
                                     </tr>
-                                    <tr class="spacer"></tr>
+                                    
                                 @endforeach
                       			@endif
                             </tbody>
@@ -54,3 +54,12 @@
     </section>
     <!-- END DATA TABLE-->
 @stop
+@section('scripts')
+<script src="{{ asset('js/jquery.dataTables.min.js') }} "></script>
+<script src="{{ asset('js/dataTables.bootstrap4.min.js') }} "></script>
+<script>
+  $(document).ready(function () {
+    $('#datatable').dataTable();
+  });
+</script>
+@endsection

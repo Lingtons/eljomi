@@ -16,7 +16,7 @@
                             </div>
                         </div>
                         <div class="table-responsive table--no-card m-b-30 ">
-                            <table class="table table-bordered table-striped table-earning">
+                            <table class="table table-bordered table-striped table-earning" id="datatable">
                                 <thead>
                                     <tr>
                                         <th>id</th>                                          
@@ -37,7 +37,7 @@
                                             <td>{{$expense->reason}}</td>
                                             <td>{{$expense->description}}</td>
                                             <td>NGN {{number_format($expense->amount, 2)}}</td>
-                                            <td>{{$expense->date_occurred}}</td>
+                                            <td>{{$expense->date_occurred->toFormattedDateString()}}</td>
                                             
                                             <td>
                                                 <div class="table-data-feature">
@@ -49,7 +49,7 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr class="spacer"></tr>
+                                      
                                     @endforeach
                                     @endif
                                 </tbody>
@@ -61,3 +61,12 @@
         </section>
     <!-- END DATA TABLE-->
 @stop
+@section('scripts')
+<script src="{{ asset('js/jquery.dataTables.min.js') }} "></script>
+<script src="{{ asset('js/dataTables.bootstrap4.min.js') }} "></script>
+<script>
+  $(document).ready(function () {
+    $('#datatable').dataTable();
+  });
+</script>
+@endsection

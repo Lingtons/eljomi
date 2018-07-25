@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Transaction;
 use Carbon\Carbon;
+use App\Models\Customer;
 use App\Models\ServiceCategory;
 use Illuminate\Support\Facades\DB;
 use Response;
@@ -20,7 +21,7 @@ class TransactionController extends Controller
     public function index()
     {
           
-          $transactions = Transaction::orderBy('id', 'asc')->get();
+          $transactions = Transaction::orderBy('id', 'desc')->get();
           return view('manage.transactions.list', ['transactions' => $transactions]);
     }
 
@@ -88,12 +89,15 @@ class TransactionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
+        
+      $this->validate($request, [
             'total' => 'required',
             'paid' => 'required',
             'balance' => 'required',
             'delivered' => 'required',
         ]);
+ 
+ 
 
         $transaction = Transaction::findOrFail($id);
         $transaction->paid = $request->input('paid');
@@ -135,6 +139,8 @@ class TransactionController extends Controller
         $delivery_time = null;
         $paid = false;
 
+        $customer = Customer::findOrFail($customer_id);
+
        $transaction = Transaction::create([
             'customer_id' => $customer_id,
             'service_category_id' => $service_category_id,
@@ -148,6 +154,9 @@ class TransactionController extends Controller
             'collections' => $collections,
             'balance' => $total
         ]);
+
+        $customer->increment('point', $total); 
+            
     
         return response()->json(['transactionId' => $transaction->id]);
         

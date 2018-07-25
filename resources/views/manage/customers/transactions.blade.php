@@ -11,7 +11,7 @@
                         
                       
                         <div class="table-responsive table--no-card m-b-30 ">
-                            <table class="table table-bordered table-striped">
+                            <table class="table table-bordered table-striped" id="datatable">
                                 <thead class="bg-dark-eljomi text-white">
                                     <tr>
                                         <th>id</th>                                       
@@ -34,7 +34,7 @@
                                             <td>{{$transaction->pickup_time->toFormattedDateString()}}</td>                                            
                                             <td>{{$transaction->due_time->toFormattedDateString()}}</td>                                            
                                             <td>{{$transaction->delivered == 0 ? 'No' : 'Yes'}}</td>
-                                            <td>{{$transaction->paid < 1 ? 'No' : 'Yes'}}</td>
+                                            <td>{{$transaction->paid < $transaction->total ? 'No' : 'Yes' }}</td>
                                             <td>
                                                 <div class="table-data-feature">                                                    
                                                     <a href="#" data-toggle="modal" class="item" data-target="#addPaymentModal{{$transaction->id}}"  data-placement="top" title="Edit">
@@ -49,7 +49,7 @@
                                             </td>
                                             @include('include.modals.payments.add')
                                         </tr>
-                                        <tr class="spacer"></tr>
+                                        
                                     @endforeach
                                     @endif
                                 </tbody>
@@ -61,3 +61,12 @@
         </section>
     <!-- END DATA TABLE-->
 @stop
+@section('scripts')
+<script src="{{ asset('js/jquery.dataTables.min.js') }} "></script>
+<script src="{{ asset('js/dataTables.bootstrap4.min.js') }} "></script>
+<script>
+  $(document).ready(function () {
+    $('#datatable').dataTable();
+  });
+</script>
+@endsection

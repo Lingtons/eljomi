@@ -19,7 +19,7 @@ class CustomerController extends Controller
     public function index()
     {
         //
-        $customers = Customer::orderBy('id', 'asc')->get();
+        $customers = Customer::orderBy('id', 'desc')->get();
         $preferences  = Preference::all();
         $values = DB::select('select value from customer_preference');
         return view('manage.customers.list', compact('customers', 'preferences', 'values'));
@@ -29,7 +29,7 @@ class CustomerController extends Controller
     {
         //
 
-        $customers = Customer::WHERE('type', $type)->orderBy('id', 'asc')->get();
+        $customers = Customer::WHERE('type', $type)->orderBy('id', 'desc')->get();
 
         $preferences  = Preference::all();
         $values = DB::select('select value from customer_preference');
@@ -109,6 +109,7 @@ class CustomerController extends Controller
              'address' => $request->input('address'),
              'gender' => $request->input('gender'),
              'code'=>$code,
+             'point' => 1
          ]);
 
          flash('New Customer '.$customer->name.' was created successfully')->important();

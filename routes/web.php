@@ -38,6 +38,7 @@ Route::prefix('manage')->middleware('auth')->group(function(){
 	Route::get('/pending', 'Web\Manage\ReportsController@pendingDelivery')->name('reports.pending');
 	Route::get('/overdue', 'Web\Manage\ReportsController@overdueDelivery')->name('reports.overdue');
 	Route::get('/highestspend', 'Web\Manage\ReportsController@highestSpender')->name('reports.highspend');
+	Route::get('/birthday', 'Web\Manage\ReportsController@monthBirthday')->name('reports.birthday');
 
 
 	Route::post('/preferences_value', 'Web\Manage\PreferenceController@preferences_value')->name('preferences_value');

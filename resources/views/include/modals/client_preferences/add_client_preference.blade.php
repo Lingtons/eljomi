@@ -30,9 +30,11 @@
               <div class="form-group">
                 <div class="col-md-12">
                   <select name="client_preference" class="form-control " required>
-                        <option value="">Select Preference</option>
-                        <option value="odogwu">Odogwu</option>
-                        <option value="lahm">Lahm</option>
+                    <option value="">Select Answer</option>
+                      @foreach( \DB::table('preference_values')->select('name')->get() as $el)
+                        <option>{{$el->name}}</option>
+                      @endforeach
+                      
                   </select>
 
                     @if ($errors->has('client_preference'))

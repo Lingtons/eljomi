@@ -11,12 +11,12 @@
                    
                     
                             <div class="float-right p-2">
-                                <a  href="{{route('items.create')}}" data-toggle="modal" data-target="#additemModal" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                <a  href="{{route('items.create')}}"  class="au-btn au-btn-icon au-btn--green au-btn--small">
                                     <i class="zmdi zmdi-plus"></i>Add Item</a>
                             </div>
                        
                         <div class="table-responsive table--no-card m-b-30 ">
-                            <table class="table table-bordered table-striped table-earning">
+                            <table class="table table-bordered table-striped table-earning" id="datatable">
                                 <thead>
                                     <tr>
                                         <th>Id</th>
@@ -46,7 +46,7 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr class="spacer"></tr>
+                                        
                                     @endforeach
                                     @endif
                                 </tbody>
@@ -58,3 +58,12 @@
         </section>
     <!-- END DATA TABLE-->
 @stop
+@section('scripts')
+<script src="{{ asset('js/jquery.dataTables.min.js') }} "></script>
+<script src="{{ asset('js/dataTables.bootstrap4.min.js') }} "></script>
+<script>
+  $(document).ready(function () {
+    $('#datatable').dataTable();
+  });
+</script>
+@endsection

@@ -7,14 +7,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h3 class="title-5 m-b-35">Clients <span class="text-info float-right">{{$type}}</span>  </h3>
+                        <h3 class="title-5 m-b-35">{{\Carbon\Carbon::now()->format('M')}} -  Birthday </h3>
                         <div class="table-data__tool">
                          
-                            <div class="table-data__tool-right">
-                                <a  href="{{route('customers.create')}}"  class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                    <i class="zmdi zmdi-plus"></i>Add Client</a>
-                            </div>
+
                         </div>
+                        <button class="m-3 btn btn-sm btn-success" onclick='dataExport("datatable", "Extract Data ")'><i class="fa fa-download"></i> Extract Data</button>
                         <div class="table-responsive table--no-card m-b-30 ">
                             <table class="table table-bordered table-striped" id="datatable">
                                 <thead class="bg-dark-eljomi text-white">
@@ -23,8 +21,7 @@
                                         <th>Name</th>
                                         <th class="sr-only">Nickname</th>
                                         <th>Phone</th>
-                                        <th>Gender</th>
-                                        <th>Address</th>
+                                        <th>Gender</th>                                      
                                         <th>Type</th>
                                         <th></th>
                                     </tr>
@@ -37,8 +34,7 @@
                                             <td>{{$customer->name}}</td>
                                             <td  class="sr-only">{{$customer->nickname}}</td>
                                             <td>{{$customer->phone}}</td>
-                                            <td>{{$customer->gender}}</td>
-                                            <td>{{$customer->address}}</td>
+                                            <td>{{$customer->gender}}</td>                                            
                                             <td>{{$customer->type}}</td>
                                             <td>
                                                 <div class="table-data-feature">
@@ -49,20 +45,22 @@
                                                     <a href="{{ route('customers.edit', ['id' => $customer->id])}}" class="item"  data-placement="top" title="Edit Information">
                                                         <i class="zmdi zmdi-edit"></i>
                                                     </a>
-                                                    <a href="#" data-target="#addClientPreference{{ $customer->id }}" data-toggle="modal" class="item"  data-placement="top" title="Set Preference">
-                                                        <i class="zmdi zmdi-more"></i>
-                                                    </a>
-
+                                               
                                                     <a href="{{ route('customer.transactions', ['id' => $customer->id])}}"  class="item" data-placement="top" title="Client Transactions">
                                                         <i class="zmdi zmdi-money-box"></i>
                                                     </a> 
                                                     
                                                 </div>
-                                            </td>
-                                            @include('include.modals.client_preferences.add_client_preference')
+                                            </td>                                            
                                         </tr>
-                                        
+                                        <tr class="spacer"></tr>
                                     @endforeach
+                                    @else
+                                    <tr>
+                                        <td colspan="8">
+                                            No Birthdays this month
+                                        </td>
+                                    </tr>
                                     @endif
                                 </tbody>
                             </table>
@@ -74,11 +72,18 @@
     <!-- END DATA TABLE-->
 @stop
 @section('scripts')
-<script src="{{ asset('js/jquery.dataTables.min.js') }} "></script>
-<script src="{{ asset('js/dataTables.bootstrap4.min.js') }} "></script>
-<script>
-  $(document).ready(function () {
-    $('#datatable').dataTable();
-  });
-</script>
+<script type="text/javascript">
+    var dataExport = (function() {
+      var uri = 'data:application/vnd.ms-excel;base64,'
+        , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--><meta http-equiv="content-type" content="text/plain; charset=UTF-8"/></head><body><table>{table}</table></body></html>'
+        , base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) }
+        , format = function(s, c) { return s.replace(/{(\w+)}/g, function(m, p) { return c[p]; }) }
+      return function(table, name) {
+        if (!table.nodeType) table = document.getElementById(table)
+        var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML}
+        
+        window.location.href = uri + base64(format(template, ctx))
+      }
+    })()
+    </script>
 @endsection

@@ -10,7 +10,7 @@
 	</div>
 	<div class="col-md-6">
         <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
-            {!! Form::label('price', 'price: ', ['class'=>'control-label']) !!}
+            {!! Form::label('price', 'Price: ', ['class'=>'control-label']) !!}
             {!! Form::number('price', old('price'), ['class'=>'form-control mb-1"']) !!}
 
             @if ($errors->has('price'))
@@ -20,11 +20,11 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row mb-5">
 
 	<div class="col-md-6">
         
-        {!! Form::label('item_category_id', 'item_category: ', ['class'=>'control-label']) !!}
+        {!! Form::label('item_category_id', 'Item Category: ', ['class'=>'control-label']) !!}
 
             {!! Form::select('item_category_id', $item_categories, old('item_category_id'), ['class'=>'form-control  mb-1']) !!}
 
@@ -34,7 +34,7 @@
     </div>
 	<div class="col-md-6">
         
-        {!! Form::label('service_category_id', 'service_category: ', ['class'=>'control-label']) !!}
+        {!! Form::label('service_category_id', 'Service Category: ', ['class'=>'control-label']) !!}
 
             {!! Form::select('service_category_id', $service_categories, old('service_category_id'), ['class'=>'form-control  mb-1']) !!}
 

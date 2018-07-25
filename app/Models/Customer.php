@@ -10,7 +10,7 @@ class Customer extends Model
 {
     //
     protected $fillable = [
-        'name', 'code', 'email', 'nickname', 'phone', 'address', 'dob', 'gender','type'
+        'name', 'code', 'email', 'nickname', 'phone', 'address', 'dob', 'gender','type', 'point'
     ];
 
     
@@ -22,7 +22,7 @@ class Customer extends Model
       
     public function transactions(){
 
-    	return $this->hasMany('App\Models\Transaction');
+    	return $this->hasMany('App\Models\Transaction')->orderBy('created_at', 'DESC');;
     	
     }
 }

@@ -34,9 +34,9 @@
     <link href="{{ asset('vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css')}}" rel="stylesheet" media="all">
     <link href="{{ asset('vendor/wow/animate.css')}}" rel="stylesheet" media="all">
     <link href="{{ asset('vendor/slick/slick.css')}}" rel="stylesheet" media="all">    
-  
+  -->
     <link href="{{ asset('vendor/select2/select2.min.css')}}" rel="stylesheet" media="all">
- -->
+ 
  
 
  <link href="{{ asset('vendor/select2/select2-bootstrap4.css')}}" rel="stylesheet" media="all">

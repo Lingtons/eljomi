@@ -86,7 +86,7 @@
                                     <a href="{{url('/manage')}}">Profit Loss Analysis</a>
                             </li>                           
                             <li>
-                                <a href="{{url('/manage')}}">Client Birthday</a>
+                                <a href="{{route('reports.birthday')}}">Client Birthday</a>
                             </li>                           
                         </ul>
                     </li>
@@ -166,7 +166,7 @@
     <div class="header-mobile__bar">
         <div class="container-fluid">
             <div class="header-mobile-inner">
-                <a class="logo" href="index.html">
+                <a class="logo" href="{{route('dashboard')}}">
                     <img src="{{asset('images/icon/logo-white.png')}}" alt="Eljomi" />
                 </a>
                 <button class="hamburger hamburger--slider" type="button">
@@ -182,11 +182,11 @@
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="has-sub">
-                            <a class="js-arrow" href="#">
+                            <a class="js-arrow" href="{{route('dashboard')}}">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                 <li>
-                                    <a href="index.html">Dashboard 1</a>
+                                    <a href="{{route('dashboard')}}">Dashboard</a>
                                 </li>
                             
                             </ul>
@@ -199,7 +199,7 @@
                                     <a href="#" data-toggle="modal" data-target="#newServiceModal" class="text-danger">New*</a>
                                 </li>   
                                 <li>
-                                    <a href="#">Transactions</a>
+                                    <a href="{{route('transactions.index')}}">Transactions</a>
                                 </li>                         
                             </ul>
                         </li>
@@ -208,10 +208,10 @@
                                 <i class="fas fa-credit-card"></i>Expenditure</a>
                             <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                 <li>
-                                    <a href="#" class="text-danger">New*</a>
+                                    <a href="{{route('expenses.create')}}" class="text-danger">New*</a>
                                 </li>   
                                 <li>
-                                    <a href="#">Expenditures</a>
+                                    <a href="{{route('expenses.index')}}">Expenditures</a>
                                 </li>                         
                             </ul>
                         </li>
@@ -220,13 +220,13 @@
                                 <i class="fas fa-group"></i>Clients</a>
                             <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                 <li>
-                                    <a href="#" class="text-danger">New*</a>
+                                    <a href="{{route('customers.create')}}" class="text-danger">New*</a>
                                 </li>   
                                 <li>
-                                    <a href="#">Individual</a>
+                                    <a href="{{route('customers.type', ['type' => 'Individual'])}}">Individual</a>
                                 </li>                    
                                 <li>
-                                    <a href="#">Corporate</a>
+                                    <a href="{{route('customers.type', ['type' => 'Corporate'])}}">Corporate</a>
                                 </li>                                                         
                             </ul>
                         </li>                                                
@@ -247,19 +247,16 @@
             <div class="setting-dropdown js-dropdown">
                 <div class="account-dropdown__body">
                      <div class="account-dropdown__item">
-              <a href="#">
+              <a href="{{route('users.index')}}">
                                     Users</a>
                     </div>
+                
                     <div class="account-dropdown__item">
-                          <a href="#">
-                                    Service Type</a>
-                    </div>
-                    <div class="account-dropdown__item">
-                         <a href="#">
+                         <a href="{{route('preferences.index')}}">
                                     Client Preference</a>
                     </div>
                     <div class="account-dropdown__item">
-                     <a href="#">
+                     <a href="{{route('items.index')}}">
                                     Items</a>
                     </div>                            
                 </div>

@@ -11,12 +11,12 @@
                         <div class="table-data__tool">
                          
                             <div class="table-data__tool-right">
-                                <a  href="{{route('customers.create')}}" data-toggle="modal" data-target="#addcustomerModal" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                <a  href="{{route('customers.create')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                                     <i class="zmdi zmdi-plus"></i>Add Client</a>
                             </div>
                         </div>
                         <div class="table-responsive table--no-card m-b-30 ">
-                            <table class="table table-bordered table-striped">
+                            <table class="table table-bordered table-striped" id="datatable">
                                 <thead class="bg-dark-eljomi text-white">
                                     <tr>
                                         <th>Id</th>
@@ -61,7 +61,7 @@
                                             </td>
                                             @include('include.modals.client_preferences.add_client_preference')
                                         </tr>
-                                        <tr class="spacer"></tr>
+                                        
                                     @endforeach
                                     @endif
                                 </tbody>
@@ -73,3 +73,12 @@
         </section>
     <!-- END DATA TABLE-->
 @stop
+@section('scripts')
+<script src="{{ asset('js/jquery.dataTables.min.js') }} "></script>
+<script src="{{ asset('js/dataTables.bootstrap4.min.js') }} "></script>
+<script>
+  $(document).ready(function () {
+    $('#datatable').dataTable();
+  });
+</script>
+@endsection
