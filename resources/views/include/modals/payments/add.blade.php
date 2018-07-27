@@ -9,7 +9,9 @@
           </button>
         </div>
         <div class="modal-body">
+
             <form class="form-horizontal" id="frm{{ $transaction->id }}" method="POST" action="{{ route('transactions.update', $transaction->id) }}">
+
                 {{ csrf_field() }}    
                 <div class="form-group">
                   <div class="col-md-12 mb-2">
@@ -50,10 +52,12 @@
   </div>
   <script src="{{ asset('vendor/jquery-3.2.1.min.js')}}"></script>
 <script type="text/javascript">
+
     $('input[id="paid{{ $transaction->id }}"]').on('keyup', function () {
      
         var paid = $(this).val();
         var total = $('input[id="total{{ $transaction->id }}"]').val();
+
         var balance = total - paid;
         if(balance < 0){
             alert('Avoid Excess Payment Entry');
