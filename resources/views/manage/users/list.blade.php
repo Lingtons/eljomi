@@ -23,6 +23,7 @@
                                     <th>Id</th>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th>Type</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -33,6 +34,7 @@
                                         <td>{{$user->id}}</td>
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->email}}</td>
+                                        <td>{{$user->type}}</td>
                                         <td>
                                             <div class="table-data-feature">    
                                                 <a href="#" data-target="#editUserModal{{ $user->id }}" data-toggle="modal" class="item"  data-placement="top" title="Edit">

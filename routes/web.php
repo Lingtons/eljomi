@@ -18,9 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::prefix('manage')->middleware('auth')->group(function(){
-	Route::get('/', function () {
-	    return view('manage.dashboard');
-	})->name('dashboard');
+	
+	Route::get('/', 'HomeController@dashboard')->name('dashboard');
+
 	Route::resource('/types', 'Web\Manage\TypeController');
 	Route::resource('/preferences', 'Web\Manage\PreferenceController');
 	Route::resource('/customers', 'Web\Manage\CustomerController');
@@ -31,6 +31,8 @@ Route::prefix('manage')->middleware('auth')->group(function(){
 	Route::resource('/expenses', 'Web\Manage\ExpenseController');
 	Route::resource('/transactions', 'Web\Manage\TransactionController', array('except' => array('create')));
 	Route::get('/transactions/create/{id?}', 'Web\Manage\TransactionController@create')->name('transactions.create');
+	Route::put('/transactions/delivery/{id}', 'Web\Manage\TransactionController@updateDelivery')->name('transactions.update_delivery');
+	Route::get('/transactions/reciept/{id}', 'Web\Manage\TransactionController@reciept')->name('transactions.reciept');
 	Route::get('/customerTransactions/{id}', 'Web\Manage\CustomerController@customerTransactions')->name('customer.transactions');
 
 	Route::get('/debts', 'Web\Manage\ReportsController@debts')->name('reports.debt');

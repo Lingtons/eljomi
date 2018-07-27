@@ -38,15 +38,20 @@
                                             <td>{{$transaction->paid < $transaction->total ? 'No' : 'Yes' }}</td>
                                             <td>
                                                 <div class="table-data-feature">                                                    
-                                                    <a href="#addPaymentModal{{$transaction->id}}" data-toggle="modal" class="item" data-target="#addPaymentModal{{$transaction->id}}"  data-placement="top" title="Edit">
+                                                    <a href="#deliveryModal{{$transaction->id}}" data-toggle="modal" class="item" data-target="#deliveryModal{{$transaction->id}}"  data-placement="top" title="Delivery">
+                                                                <i class="zmdi zmdi-share"></i>
+                                                    </a> 
+                                                    <a href="#addPaymentModal{{$transaction->id}}" data-toggle="modal" class="item" data-target="#addPaymentModal{{$transaction->id}}"  data-placement="top" title="Payment">
                                                         <i class="zmdi zmdi-money-box"></i>
                                                     </a> 
                                                     
-                                                    <a href="{{ route('transactions.show', ['id' => $transaction->id])}}" class="item"  data-placement="top" title="Edit">
+                                                    <a href="{{ route('transactions.show', ['id' => $transaction->id])}}" class="item"  data-placement="top" title="Print">
                                                             <i class="zmdi zmdi-print"></i>
                                                         </a> 
                                                 </div>                                                
                                                 @include('include.modals.payments.add')    
+                                                @include('include.modals.delivery.add')    
+
                                             </td>
                                             
                                         </tr>

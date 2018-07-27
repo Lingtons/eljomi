@@ -7,7 +7,13 @@ function sumMonthTransaction(){
         Carbon\Carbon::now()->endOfMonth(),
     ])
     ->selectRaw('sum(total) as sum')->pluck('sum');                                        
-    return strip($response);
+    
+    if (strip($response) > 0 ){
+        return strip($response);
+    }else{
+        return 0;
+    }
+
     }
 function sumMonthExpenditure(){   
 
@@ -16,7 +22,14 @@ function sumMonthExpenditure(){
         Carbon\Carbon::now()->endOfMonth(),
     ])
     ->selectRaw('sum(amount) as sum')->pluck('sum');                                        
-    return strip($response);
+
+    if (strip($response) > 0 ){
+        return strip($response);
+    }else{
+        return 0;
+    }
+    
+
 }    
 
 function countMonthClients(){   

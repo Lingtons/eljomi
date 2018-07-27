@@ -34,6 +34,17 @@
                               @endif
                           </div>
                       </div>
+
+                      <div class="row">
+                            <div class="col-md-12">              
+                                    <select name="type" id="type" required class="form-control">
+                                      <option selected>{{ $user->type }}</option>
+                                      <option>Administrator</option>
+                                      <option>Marketer</option>
+                                      <option>Factory</option>
+                                    </select>
+                                </div>
+                        </div>
                   </div>
               </div>
         </div>                            

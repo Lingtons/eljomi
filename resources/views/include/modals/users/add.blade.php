@@ -28,6 +28,16 @@
               </span>
               @endif
             </div>
+
+            <div class="col-md-12">              
+                <select name="type" id="type" required class="form-control">
+                  <option value="">Select User Type</option>
+                  <option>Administrator</option>
+                  <option>Marketer</option>
+                  <option>Factory</option>
+                </select>
+            </div>
+
           </div>
           <div class="modal-footer">
               <button type="submit" class="btn btn-success">Create User</button>

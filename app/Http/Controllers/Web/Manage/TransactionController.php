@@ -93,8 +93,8 @@ class TransactionController extends Controller
       $this->validate($request, [
             'total' => 'required',
             'paid' => 'required',
-            'balance' => 'required',
-            'delivered' => 'required',
+            'balance' => 'required',            
+            'paytype' => 'required'
         ]);
  
  
@@ -102,7 +102,8 @@ class TransactionController extends Controller
         $transaction = Transaction::findOrFail($id);
         $transaction->paid = $request->input('paid');
         $transaction->balance = $request->input('balance');
-        $transaction->delivered = $request->input('delivered');
+        $transaction->paytype = $request->input('paytype');
+        
 
         if($transaction->save()){
             flash('Transaction was successfully updated')->important();
@@ -187,4 +188,31 @@ class TransactionController extends Controller
 
 
     }
+
+
+    public function updateDelivery(Request $request, $id)
+    {
+        
+      $this->validate($request, [            
+            'delivered' => 'required',
+        ]);
+ 
+ 
+
+        $transaction = Transaction::findOrFail($id);
+        $transaction->delivered = $request->input('delivered');
+
+        if($transaction->save()){
+            flash('Delivery status was successfully updated')->important();
+            return redirect()->back();
+        }
+    }
+
+    public function reciept($id)
+    {
+        //
+        $transaction = Transaction::find($id);
+        return view('manage.transactions.reciept', ['transaction' => $transaction]);
+    }
+
 }

@@ -26,6 +26,7 @@ class CreateTransactionsTable extends Migration
             $table->decimal('total');
             $table->decimal('paid')->nullable();
             $table->decimal('balance')->nullable();
+            $table->string('paytype')->nullable();
             $table->boolean('delivered')->default(false);
             
             $table->foreign('customer_id')->references('id')

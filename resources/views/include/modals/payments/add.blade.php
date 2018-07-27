@@ -28,21 +28,30 @@
                             <label for="balance">Balance</label>                      
                           <input id="balance{{ $transaction->id }}" type="number" class="form-control" name="balance" value="{{$transaction->balance}}"  readonly>                     
                     </div>
+
                     <div class="col-md-12 mb-2">
-                        <label for="delivered">Delivery Status</label>
-                        <select name="delivered" id="delivered{{ $transaction->id }}" class="form-control" required>                            
-                            <option value="{{$transaction->delivered}}" selected>{{$transaction->delivered == 0 ? 'Not Delivered' : 'Delivered'}}</option>
-                            <option value="0">Not Delivered</option>
-                            <option value="1">Delivered</option>
-                        </select>
-                    </div>
+                            <label for="paytype">Payment Type</label>
+                            <select name="paytype" id="paytype{{ $transaction->id }}" class="form-control" required>                            
+                                <option value="{{$transaction->paytype}}" selected>{{$transaction->paytype == null ? 'Select Payment' : $transaction->paytype}}</option>
+                                <option>Cash</option>
+                                <option>POS</option>
+                                <option>Mobile Transfer</option>                                
+                            </select>
+                        </div>
+
                   
                 </div>                           
                 <div class="modal-footer">                 
+                    
                     <input type="hidden" name="_token" value="{{ Session::token() }}">  
                     <input name="_method" type="hidden" value="PUT">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  @if(($transaction->balance < 1) && ($transaction->paid >= $transaction->total))                  
+                  <a href="{{route('transactions.reciept', $transaction->id)}}" class="btn btn-info float-left">Print Reciept <i class="fa fa-file"></i> </a>
+                  @else
                   <button type="submit" class="btn btn-success">Save</button>
+                  @endif
+
                 </div>
         </div>
         

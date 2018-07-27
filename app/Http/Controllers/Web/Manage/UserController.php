@@ -45,7 +45,8 @@ class UserController extends Controller
         //
         $this->validate($request, [
         'name' => 'required|max:255',
-        'email' => 'required|email|unique:users'
+        'email' => 'required|email|unique:users',
+        'type' => 'required'
       ]);
 
       $user = new User();
@@ -53,6 +54,8 @@ class UserController extends Controller
       $user->email = $request->email;
       $password = "password";
       $user->password = Hash::make($password);
+      $user->type = $request->type;
+      
       $user->save();
 
       flash('The User '.$user->name.' was created successfully')->important();
@@ -98,12 +101,15 @@ class UserController extends Controller
         //
         $this->validate($request, [
         'name' => 'required|max:255',
-        'email' => 'required|email|unique:users,email,'.$id
+        'email' => 'required|email|unique:users,email,'.$id,
+        'type' => 'required'
       ]);
 
       $user = User::findOrFail($id);
       $user->name = $request->name;
       $user->email = $request->email;
+      $user->type = $request->type;
+
       
       if($user->save()){
             flash('The User '.$user->name.' was successfully updated')->important();

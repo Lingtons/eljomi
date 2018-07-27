@@ -50,7 +50,13 @@
 <body>
     <div class="page-wrapper">
         <!-- header -->
+        @if(auth()->user()->type == 'Administrator')
         @include('include.manage.header')
+        @elseif(auth()->user()->type == 'Marketer')
+        @include('include.manage.marketer_header')
+        @else
+        @include('include.manage.factory_header')
+        @endif
         <!-- end of header -->
 
         <!-- PAGE CONTENT-->
